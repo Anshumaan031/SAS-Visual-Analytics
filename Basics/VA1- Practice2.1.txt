@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA1- Practice2.1" createdLocale="en_US" createdVersion="4.0.2" dateCreated="2017-05-09T19:29:05Z" dateModified="2019-09-30T17:06:44Z" createdApplication="SAS Visual Analytics 8.1" lastModifiedApplication="SAS Visual Analytics 8.4" nextUniqueNameIndex="147">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd40">
+            <BusinessItems>
+                <RelationalDataItem name="bi43" base="bi12"/>
+                <RelationalDataItem name="bi44" base="bi13"/>
+                <RelationalDataItem name="bi45" base="bi14"/>
+                <RelationalDataItem name="bi46" base="bi15"/>
+                <RelationalDataItem name="bi47" base="bi16"/>
+                <RelationalDataItem name="bi48" base="bi18"/>
+                <RelationalDataItem name="bi49" base="bi19"/>
+                <RelationalDataItem name="bi50" base="bi20"/>
+                <RelationalDataItem name="bi51" base="bi21"/>
+                <RelationalDataItem name="bi52" base="bi29"/>
+                <RelationalDataItem name="bi53" base="bi11"/>
+                <RelationalDataItem name="bi54" base="bi17"/>
+                <RelationalDataItem name="bi55" base="bi22"/>
+                <RelationalDataItem name="bi56" base="bi23"/>
+                <RelationalDataItem name="bi57" base="bi24"/>
+                <RelationalDataItem name="bi58" base="bi25"/>
+                <RelationalDataItem name="bi59" base="bi26"/>
+                <RelationalDataItem name="bi60" base="bi27"/>
+                <RelationalDataItem name="bi61" base="bi28"/>
+                <RelationalDataItem name="bi62" base="bi30"/>
+                <RelationalDataItem name="bi63" base="bi31"/>
+                <RelationalDataItem name="bi64" base="bi32"/>
+                <RelationalDataItem name="bi65" base="bi33"/>
+                <RelationalDataItem name="bi66" base="bi34"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="relational" name="dd41">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi43"/>
+                            <BusinessItem ref="bi44"/>
+                            <BusinessItem ref="bi45"/>
+                            <BusinessItem ref="bi46"/>
+                            <BusinessItem ref="bi47"/>
+                            <BusinessItem ref="bi48"/>
+                            <BusinessItem ref="bi49"/>
+                            <BusinessItem ref="bi50"/>
+                            <BusinessItem ref="bi51"/>
+                            <BusinessItem ref="bi52"/>
+                            <BusinessItem ref="bi53"/>
+                            <BusinessItem ref="bi54"/>
+                            <BusinessItem ref="bi55"/>
+                            <BusinessItem ref="bi56"/>
+                            <BusinessItem ref="bi57"/>
+                            <BusinessItem ref="bi58"/>
+                            <BusinessItem ref="bi59"/>
+                            <BusinessItem ref="bi60"/>
+                            <BusinessItem ref="bi61"/>
+                            <BusinessItem ref="bi62"/>
+                            <BusinessItem ref="bi63"/>
+                            <BusinessItem ref="bi64"/>
+                            <BusinessItem ref="bi65"/>
+                            <BusinessItem ref="bi66"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi43" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRows="40000" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd42"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd71">
+            <BusinessItems>
+                <RelationalDataItem name="bi76" base="bi35"/>
+                <RelationalDataItem name="bi143" base="bi13"/>
+                <RelationalDataItem name="bi145" base="bi21"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="multidimensional" name="dd72">
+                <MultidimensionalQuery rowSubtotals="false" columnSubtotals="true" detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi76"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi143"/>
+                            <BusinessItem ref="bi145"/>
+                        </Axis>
+                    </Axes>
+                    <RowSortItems>
+                        <SortItem ref="bi143" sortDirection="ascending"/>
+                        <SortItem ref="bi145" sortDirection="ascending"/>
+                    </RowSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="crosstab" maxRowsBehavior="noData" name="dd73"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="EMPLOYEES" type="relational" name="ds10">
+            <CasResource server="cas-shared-default" library="Public" table="EMPLOYEES" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi11" xref="Salary"/>
+                <DataItem name="bi12" xref="Company"/>
+                <DataItem name="bi13" xref="Department"/>
+                <DataItem name="bi14" xref="Employee_BirthDate"/>
+                <DataItem name="bi15" xref="Employee_Country"/>
+                <DataItem name="bi16" xref="Employee_Hire_Date"/>
+                <DataItem name="bi17" xref="Employee_ID"/>
+                <DataItem name="bi18" xref="Employee_Name"/>
+                <DataItem name="bi19" xref="Employee_Term_Date"/>
+                <DataItem name="bi20" xref="Org_Group"/>
+                <DataItem name="bi21" xref="Job_Title"/>
+                <DataItem name="bi22" xref="Manager_Levels"/>
+                <DataItem name="bi23" xref="Manager_Level1"/>
+                <DataItem name="bi24" xref="Manager_Level2"/>
+                <DataItem name="bi25" xref="Manager_Level3"/>
+                <DataItem name="bi26" xref="Manager_Level4"/>
+                <DataItem name="bi27" xref="Manager_Level5"/>
+                <DataItem name="bi28" xref="Manager_Level6"/>
+                <DataItem name="bi29" xref="Section"/>
+                <DataItem name="bi30" xref="Total_Customers"/>
+                <DataItem name="bi31" xref="Total_Orders"/>
+                <DataItem name="bi32" xref="Total_Products_Ordered"/>
+                <DataItem name="bi33" xref="Total_Profit"/>
+                <DataItem name="bi34" xref="Total_Quantity_Ordered"/>
+                <PredefinedDataItem calculation="totalCount" name="bi35" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi36" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Table resultDefinitions="dd42" name="ve39" data="dd40" label="List Table 1" applyDynamicBrushes="yes" sourceInteractionVariables="bi43 bi44 bi45 bi46 bi47 bi48 bi49 bi50 bi51 bi52">
+            <Columns>
+                <Column variable="bi43" isVisible="true"/>
+                <Column variable="bi44" isVisible="true"/>
+                <Column variable="bi45" isVisible="true"/>
+                <Column variable="bi46" isVisible="true"/>
+                <Column variable="bi47" isVisible="true"/>
+                <Column variable="bi48" isVisible="true"/>
+                <Column variable="bi49" isVisible="true"/>
+                <Column variable="bi50" isVisible="true"/>
+                <Column variable="bi51" isVisible="true"/>
+                <Column variable="bi52" isVisible="true"/>
+                <Column variable="bi53" isVisible="true"/>
+                <Column variable="bi54" isVisible="true"/>
+                <Column variable="bi55" isVisible="true"/>
+                <Column variable="bi56" isVisible="true"/>
+                <Column variable="bi57" isVisible="true"/>
+                <Column variable="bi58" isVisible="true"/>
+                <Column variable="bi59" isVisible="true"/>
+                <Column variable="bi60" isVisible="true"/>
+                <Column variable="bi61" isVisible="true"/>
+                <Column variable="bi62" isVisible="true"/>
+                <Column variable="bi63" isVisible="true"/>
+                <Column variable="bi64" isVisible="true"/>
+                <Column variable="bi65" isVisible="true"/>
+                <Column variable="bi66" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Crosstab resultDefinitions="dd73" name="ve70" data="dd71" label="Crosstab 1" applyDynamicBrushes="yes" sourceInteractionVariables="bi143 bi145">
+            <EditorProperties>
+                <Property key="autoFrequencyQueryDataItemName">bi76</Property>
+            </EditorProperties>
+            <Axes>
+                <Axis type="column">
+                    <Measures>
+                        <Measure name="ve77" variable="bi76"/>
+                    </Measures>
+                </Axis>
+                <Axis type="row">
+                    <Hierarchy name="ve144" variable="bi143"/>
+                    <Hierarchy name="ve146" variable="bi145"/>
+                </Axis>
+            </Axes>
+        </Crosstab>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve39" name="vi37"/>
+                </MediaContainer>
+            </Body>
+        </Section>
+        <Section name="vi67" label="Page 2">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve70" name="vi68"/>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="umstead"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi67</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.0.2" lastDate="2017-05-09T19:29:05Z"/>
+            <Version key="4.1.2" lastDate="2018-06-13T19:09:49Z"/>
+            <Version key="4.2.2" lastDate="2019-09-09T16:15:48Z"/>
+            <Version key="4.2.4" lastDate="2020-10-27T18:28:02Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.0.2" finalVersion="4.1.2" date="2018-06-13T19:09:49Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.2" date="2019-09-09T15:22:03Z"/>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2020-10-27T18:27:57Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-09T16:15:48.556Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

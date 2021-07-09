@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA1- Practice4.1" createdLocale="en_US" createdVersion="4.0.2" dateCreated="2017-03-30T08:39:45Z" dateModified="2019-12-10T23:10:16Z" createdApplication="SAS Visual Analytics 8.1" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="449">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd440">
+            <BusinessItems>
+                <RelationalDataItem name="bi444" base="bi21"/>
+                <RelationalDataItem name="bi447" base="bi409"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="multidimensional" name="dd441">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi444"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi447"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi444" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRows="3000" maxRowsLookup="graphDefault" maxRowsBehavior="truncate" name="dd442"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="EMPLOYEES_CLEAN" type="relational" name="ds10">
+            <CasResource server="cas-shared-default" library="Public" table="EMPLOYEES_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi11" xref="Anniversary Month"/>
+                <DataItem name="bi12" xref="Salary" format="DOLLAR13.2" hidden="true"/>
+                <DataItem name="bi13" xref="Company" hidden="true"/>
+                <DataItem name="bi14" xref="Department" hidden="true"/>
+                <DataItem name="bi15" xref="Employee_Country" usage="categorical">
+                    <GeoInfo geoType="external" coordinateSpace="WGS84">
+                        <Lookup property="longitude" externalSource="iso.3166-1.alpha"/>
+                        <Lookup property="latitude" externalSource="iso.3166-1.alpha"/>
+                        <Lookup property="polygonId" externalSource="iso.3166-1.alpha"/>
+                        <Lookup property="mapId" externalSource="iso.3166-1.alpha"/>
+                    </GeoInfo>
+                </DataItem>
+                <DataItem name="bi16" xref="Employee_Hire_Date" hidden="true"/>
+                <DataItem name="bi17" xref="Employee_Term_Date" hidden="true"/>
+                <DataItem name="bi19" label="Name" xref="Employee_Name" hidden="true"/>
+                <DataItem name="bi20" xref="Org_Group" hidden="true"/>
+                <DataItem name="bi21" xref="Job_Title"/>
+                <DataItem name="bi22" label="Manager ID" xref="Manager ID" usage="categorical" format="F12.0" hidden="true"/>
+                <DataItem name="bi24" xref="Total_Orders" hidden="true"/>
+                <DataItem name="bi25" xref="Total_Profit" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi26" label="Number of Employees" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi27" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <PredefinedDataItem calculation="sumPercent" total="grand" base="bi12" name="bi192" label="Percent of Total Salary" usage="quantitative" format="PERCENT12.2" hidden="true"/>
+                <CalculatedItem dataType="double" name="bi214" label="Years of Service" usage="quantitative" format="COMMA12.2" aggregation="average" hidden="true">
+                    <Expression>cond(ismissing(${bi17,binned}),div(minus(typecast(DOUBLE,datepart(now())),typecast(DOUBLE,${bi16,binned})),365.25),div(minus(typecast(DOUBLE,${bi17,binned}),typecast(DOUBLE,${bi16,binned})),365.25))</Expression>
+                </CalculatedItem>
+                <GroupedItem grouping="gr233" dataType="string" label="Employee Status" hidden="true" name="bi231">
+                    <GroupingParameters>
+                        <GroupingParameter parameter="bi17" variable="var232"/>
+                    </GroupingParameters>
+                </GroupedItem>
+                <DataItem name="bi409" label="Average Profit" xref="Total_Profit" aggregation="average"/>
+                <Hierarchy name="bi432" label="Employee Hierarchy" hidden="true">
+                    <Level ref="bi13"/>
+                    <Level ref="bi21"/>
+                    <Level ref="bi20"/>
+                </Hierarchy>
+                <DataItem name="bi448" label="ID" xref="Employee ID" hidden="true"/>
+            </BusinessItemFolder>
+            <AppliedFilters/>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="bar" supplementalVisuals="ve443" resultDefinitions="dd442" name="ve439" data="dd440" label="Average Profit by Job Title" applyDynamicBrushes="yes" sourceInteractionVariables="bi444">
+            <Title auto="false"><P><Span>Average Profit by Job Title</Span></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="CATEGORY" description="CATEGORY_VAR" required="true" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd442.bi444</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE" description="MEASURE_VAR" required="true" assignedType="any" type="numeric" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd442.bi447</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="GROUP" description="SUBGROUP_VAR" required="false" type="character"/>
+            <DynVar name="COLUMN" description="HORIZONTAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="ROW" description="VERTICAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd442.bi444</Value>
+                    <Value>dd442.bi447</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="KEY_FRAME" description="ANIMATION" required="false" type="time" multiplesAllowed="false"/>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+        <DataNameMap>
+            <Entry model="LayoutDataMatrix_46" data="dd442"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutDataMatrix name="LayoutDataMatrix_46" includeMissingClass="true" rowVars="ROW" columnVars="COLUMN">
+        <LayoutPrototypeOverlay2D>
+            <BarChartParm name="BarChart" tipListPolicy="replace" _stmt="barchart" groupDisplay="cluster" orient="horizontal" stat="none" tip="TIP" category="CATEGORY" responseVars="RESPONSE" group="GROUP"/>
+            <XAxisOpts name="categoryAxis">
+                <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </XAxisOpts>
+            <YAxisOpts display="LINE TICKS TICKVALUES" reverse="true">
+                <DiscreteOpts sortOrder="data" tickValueAppearance="auto"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top">
+        <AutoLegend>
+            <GraphNames>
+                <Value>BarChart</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <Animation keyFrame="KEY_FRAME"/>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd442" name="ve443" data="dd440" applyDynamicBrushes="yes" sourceInteractionVariables="bi444">
+            <Columns>
+                <Column variable="bi444" isVisible="true"/>
+                <Column variable="bi447" isVisible="true"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve439" name="vi437"/>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="umstead"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+    </Properties>
+    <Groupings>
+        <Grouping outputType="string" name="gr233">
+            <GroupingVariables>
+                <GroupingVariable variable="var232" type="date"/>
+            </GroupingVariables>
+            <Group>
+                <ValueExpression>'Active'</ValueExpression>
+                <TestExpression>ismissing(${var232,binned})</TestExpression>
+            </Group>
+            <Other>
+                <ValueExpression>'Retired'</ValueExpression>
+            </Other>
+        </Grouping>
+    </Groupings>
+    <History>
+        <Versions>
+            <Version key="4.0.2" lastDate="2017-03-30T08:39:45Z"/>
+            <Version key="4.1.2" lastDate="2018-07-18T17:45:44Z"/>
+            <Version key="4.2.2" lastDate="2019-09-09T15:49:36Z"/>
+            <Version key="4.2.4" lastDate="2020-10-27T18:30:09Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.0.2" finalVersion="4.1.2" date="2018-07-18T17:45:44Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.2" date="2019-09-09T15:49:16Z"/>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2019-12-10T22:34:27Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-09T15:49:36.854Z"/>
+                <Revision editorVersion="8.5" lastDate="2019-12-10T23:10:15.794Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

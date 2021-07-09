@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA1- Practice3.1" createdLocale="en_US" createdVersion="4.0.2" dateCreated="2017-05-10T16:15:36Z" dateModified="2019-12-10T23:07:42Z" createdApplication="SAS Visual Analytics 8.1" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="29">
+    <DataSources>
+        <DataSource label="EMPLOYEES_CLEAN" type="relational" name="ds10">
+            <CasResource server="cas-shared-default" library="Public" table="EMPLOYEES_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi11" xref="Anniversary Month"/>
+                <DataItem name="bi12" xref="Salary"/>
+                <DataItem name="bi13" xref="Company"/>
+                <DataItem name="bi14" xref="Department"/>
+                <DataItem name="bi15" xref="Employee_Country"/>
+                <DataItem name="bi16" xref="Employee_Hire_Date"/>
+                <DataItem name="bi17" xref="Employee_Term_Date"/>
+                <DataItem name="bi19" xref="Employee_Name"/>
+                <DataItem name="bi20" xref="Org_Group"/>
+                <DataItem name="bi21" xref="Job_Title"/>
+                <DataItem name="bi22" xref="Manager ID"/>
+                <DataItem name="bi24" xref="Total_Orders"/>
+                <DataItem name="bi25" xref="Total_Profit"/>
+                <PredefinedDataItem calculation="totalCount" name="bi26" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi27" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi28" xref="Employee ID"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="umstead"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.0.2" lastDate="2017-05-10T16:15:36Z"/>
+            <Version key="4.1.2" lastDate="2018-06-27T14:32:03Z"/>
+            <Version key="4.2.2" lastDate="2019-09-09T15:22:58Z"/>
+            <Version key="4.2.4" lastDate="2020-10-27T18:28:14Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.0.2" finalVersion="4.1.2" date="2018-06-27T14:32:03Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.2" date="2019-09-09T15:22:41Z"/>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2019-12-10T21:22:48Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-09T15:22:58.730Z"/>
+                <Revision editorVersion="8.5" lastDate="2019-12-10T23:07:41.842Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA1- Demo3.2b" createdLocale="en_US" createdVersion="4.0.2" dateCreated="2017-05-10T16:40:36Z" dateModified="2019-12-10T21:25:43Z" createdApplication="SAS Visual Analytics 8.1" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="140">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd38">
+            <BusinessItems>
+                <RelationalDataItem name="bi41" base="bi28"/>
+                <SyntheticDataItem name="bi43"/>
+                <SyntheticDataItem name="bi44"/>
+                <RelationalDataItem name="bi47" base="bi34"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="procedural" name="dd39">
+                <ProceduralQuery type="histogram">
+                    <Arguments>
+                        <Argument purpose="binType">
+                            <StringValue>defaultBinEdges</StringValue>
+                        </Argument>
+                        <Argument purpose="inputVariable">
+                            <ReferenceValue>bi41</ReferenceValue>
+                        </Argument>
+                        <Argument purpose="lowerBound">
+                            <ReferenceValue>bi43</ReferenceValue>
+                        </Argument>
+                        <Argument purpose="upperBound">
+                            <ReferenceValue>bi44</ReferenceValue>
+                        </Argument>
+                        <Argument purpose="aggregatedMeasure">
+                            <ReferenceValue>bi47</ReferenceValue>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" name="dd40"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd64">
+            <BusinessItems>
+                <RelationalDataItem name="bi62" base="bi12"/>
+                <RelationalDataItem name="bi56" base="bi25"/>
+                <RelationalDataItem name="bi60" base="bi28"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="multidimensional" name="dd65">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi62"/>
+                            <BusinessItem ref="bi56"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi60"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi62" sortDirection="ascending"/>
+                        <SortItem ref="bi56" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRows="3000" maxRowsLookup="graphDefault" maxRowsBehavior="truncate" name="dd66"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd73">
+            <BusinessItems>
+                <RelationalDataItem name="bi82" base="bi28"/>
+                <RelationalDataItem name="bi96" base="bi12"/>
+                <SyntheticItems name="si103">
+                    <Item purpose="average" name="bi84"/>
+                    <Item purpose="count" name="bi85"/>
+                    <Item purpose="lowerWhisker" name="bi86"/>
+                    <Item purpose="max" name="bi87"/>
+                    <Item purpose="measureLabel" name="bi88"/>
+                    <Item purpose="median" name="bi90"/>
+                    <Item purpose="min" name="bi91"/>
+                    <Item purpose="firstQuartile" name="bi92"/>
+                    <Item purpose="thirdQuartile" name="bi93"/>
+                    <Item purpose="standardDeviation" name="bi94"/>
+                    <Item purpose="upperWhisker" name="bi95"/>
+                </SyntheticItems>
+                <SyntheticItems root="bi82" name="si104">
+                    <Item purpose="average" name="bi105"/>
+                    <Item purpose="count" name="bi106"/>
+                    <Item purpose="lowerWhisker" name="bi107"/>
+                    <Item purpose="max" name="bi108"/>
+                    <Item purpose="measureLabel" name="bi109"/>
+                    <Item purpose="median" name="bi110"/>
+                    <Item purpose="min" name="bi111"/>
+                    <Item purpose="firstQuartile" name="bi112"/>
+                    <Item purpose="thirdQuartile" name="bi113"/>
+                    <Item purpose="standardDeviation" name="bi114"/>
+                    <Item purpose="upperWhisker" name="bi115"/>
+                    <Item purpose="displayMin" name="bi116"/>
+                    <Item purpose="lowBinExists" name="bi117"/>
+                    <Item purpose="lowBinStart" name="bi118"/>
+                    <Item purpose="lowBinWidth" name="bi119"/>
+                    <Item purpose="lowOutlier0" name="bi120"/>
+                    <Item purpose="lowOutlier1" name="bi121"/>
+                    <Item purpose="lowOutlier2" name="bi122"/>
+                    <Item purpose="lowOutlier3" name="bi123"/>
+                    <Item purpose="lowOutlier4" name="bi124"/>
+                    <Item purpose="lowOutlier5" name="bi125"/>
+                    <Item purpose="displayMax" name="bi126"/>
+                    <Item purpose="highBinExists" name="bi127"/>
+                    <Item purpose="highBinStart" name="bi128"/>
+                    <Item purpose="highBinWidth" name="bi129"/>
+                    <Item purpose="highOutlier0" name="bi130"/>
+                    <Item purpose="highOutlier1" name="bi131"/>
+                    <Item purpose="highOutlier2" name="bi132"/>
+                    <Item purpose="highOutlier3" name="bi133"/>
+                    <Item purpose="highOutlier4" name="bi134"/>
+                    <Item purpose="highOutlier5" name="bi135"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="procedural" name="dd74">
+                <ProceduralQuery type="heatBox">
+                    <Arguments>
+                        <Argument purpose="outliers">
+                            <StringValue>ignore</StringValue>
+                        </Argument>
+                        <ListArgument purpose="inputVariables">
+                            <ReferenceValue>si104</ReferenceValue>
+                        </ListArgument>
+                        <Argument purpose="category">
+                            <ReferenceValue>bi96</ReferenceValue>
+                        </Argument>
+                        <ArgumentGroup group="primary">
+                            <Argument purpose="useGenericMeasureColumnLabels">
+                                <BooleanValue>false</BooleanValue>
+                            </Argument>
+                        </ArgumentGroup>
+                    </Arguments>
+                    <SortItems>
+                        <SortItem ref="bi96" sortDirection="ascending"/>
+                        <SortItem ref="bi110" sortDirection="descending"/>
+                    </SortItems>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRows="10400" maxRowsLookup="heatbox" maxRowsBehavior="noData" name="dd76" syntheticItems="si104"/>
+                    <ResultDefinition purpose="summaryStatistics" name="dd83" syntheticItems="si103"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="CUSTOMERS_CLEAN" type="relational" name="ds10">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi11" xref="City"/>
+                <DataItem name="bi12" xref="Continent"/>
+                <DataItem name="bi13" label="Unit Cost" xref="Unit Cost"/>
+                <DataItem name="bi14" xref="Customer_BirthDate"/>
+                <DataItem name="bi15" xref="CustomerCountryLabel"/>
+                <DataItem name="bi16" xref="Customer_Group"/>
+                <DataItem name="bi17" xref="Customer_Type"/>
+                <DataItem name="bi21" label="Delivery Date" xref="Delivery_Date" format="MONYY7"/>
+                <DataItem name="bi22" label="Order Date" xref="Order_Date"/>
+                <DataItem name="bi23" xref="Days to Delivery" aggregation="average"/>
+                <DataItem name="bi24" label="Discount" xref="Discount" aggregation="average"/>
+                <DataItem name="bi25" xref="OrderTypeLabel"/>
+                <DataItem name="bi27" xref="Postal_Code"/>
+                <DataItem name="bi28" xref="Profit" format="DOLLAR12.2"/>
+                <DataItem name="bi29" label="Quantity" xref="Quantity"/>
+                <DataItem name="bi30" label="Total Revenue" xref="Total Revenue"/>
+                <DataItem name="bi31" xref="State_Province"/>
+                <PredefinedDataItem calculation="totalCount" name="bi33" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi34" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi136" xref="Customer ID"/>
+                <DataItem name="bi137" xref="Order ID"/>
+                <DataItem name="bi138" xref="Customer_Name"/>
+                <DataItem name="bi139" xref="Loyalty Num"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="histogram" supplementalVisuals="ve46" resultDefinitions="dd40" name="ve37" data="dd38" label="Distribution of Profit" applyDynamicBrushes="no"><![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="X" description="HISTOGRAM_MEASURE" required="true" assignedType="any" type="numeric">
+                <DefaultValues>
+                    <Value>dd40.bi41</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="Y" description="HISTOGRAM_FREQUENCY" required="true" assignedType="any" type="numeric">
+                <DefaultValues>
+                    <Value>dd40.bi47</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="TIP" description="TIP_VAR" required="false" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd40.bi41</Value>
+                    <Value>dd40.bi47</Value>
+                    <Value>dd40.bi47</Value>
+                    <Value>dd40.bi43</Value>
+                    <Value>dd40.bi44</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutOverlay>
+        <HistogramParm name="HistogramParm" tipListPolicy="replace" _stmt="histogramparm" xValues="leftpoints" dataLabelFitPolicy="auto" tip="TIP" x="X" y="Y"/>
+        <XAxisOpts gridDisplay="off">
+            <LinearOpts>
+                <TickValueFormatOpts maxWidth="2" extractScale="true"/>
+            </LinearOpts>
+        </XAxisOpts>
+        <YAxisOpts>
+            <LinearOpts>
+                <TickValueFormatOpts maxWidth="2" extractScale="true"/>
+            </LinearOpts>
+        </YAxisOpts>
+    </LayoutOverlay>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd40" name="ve46" data="dd38" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi43" isVisible="true"/>
+                <Column variable="bi44" isVisible="true"/>
+                <Column variable="bi47" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Graph graphType="bar" supplementalVisuals="ve68" resultDefinitions="dd66" name="ve52" data="dd64" label="Profit by Continent and Order Type" applyDynamicBrushes="yes" sourceInteractionVariables="bi62 bi56"><![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="CATEGORY" description="CATEGORY_VAR" required="true" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd66.bi62</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE" description="MEASURE_VAR" required="true" assignedType="any" type="numeric" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd66.bi60</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="GROUP" description="SUBGROUP_VAR" required="false" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd66.bi56</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="COLUMN" description="HORIZONTAL_SERIES_VAR" required="false" assignedType="any" type="character" multiplesAllowed="true"/>
+            <DynVar name="ROW" description="VERTICAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd66.bi62</Value>
+                    <Value>dd66.bi60</Value>
+                    <Value>dd66.bi56</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="KEY_FRAME" description="ANIMATION" required="false" type="time" multiplesAllowed="false"/>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+        <DataNameMap>
+            <Entry model="LayoutDataMatrix_2" data="dd66"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutDataMatrix name="LayoutDataMatrix_2" includeMissingClass="true" headerLabelAppearance="auto" rowVars="ROW" columnVars="COLUMN" columnVarsSortOrder="ascending_unformatted">
+        <LayoutPrototypeOverlay2D>
+            <BarChartParm name="BarChart" tipListPolicy="replace" _stmt="barchart" groupDisplay="stack" orient="horizontal" barLabel="true" stat="none" tip="TIP" category="CATEGORY" responseVars="RESPONSE" group="GROUP"/>
+            <XAxisOpts name="categoryAxis">
+                <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </XAxisOpts>
+            <YAxisOpts reverse="true">
+                <DiscreteOpts sortOrder="data" tickValueAppearance="auto"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top">
+        <AutoLegend sortOrder="ascending">
+            <GraphNames>
+                <Value>BarChart</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <Animation keyFrame="KEY_FRAME"/>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd66" name="ve68" data="dd64" applyDynamicBrushes="yes" sourceInteractionVariables="bi62 bi56">
+            <Columns>
+                <Column variable="bi62" isVisible="true"/>
+                <Column variable="bi60" isVisible="true"/>
+                <Column variable="bi56" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Graph graphType="heatBox" supplementalVisuals="ve80" resultDefinitions="dd76" name="ve72" data="dd73" label="Profit by Continent" applyDynamicBrushes="no" sourceInteractionVariables="bi96">
+            <EditorProperties>
+                <Property key="measureLayout">sharedAxis</Property>
+                <Property key="showGridLines">true</Property>
+                <Property key="boxDirection">vertical</Property>
+                <Property key="showAverages">true</Property>
+                <Property key="axisTickValueFitPolicy">STAGGERTRUNCATEDROP</Property>
+            </EditorProperties>
+<![CDATA[<StatGraph opaque="false" includeMissingDiscrete="true" missingValueDisplay="autolabel">
+    <Meta>
+        <DataNameMap>
+            <Entry model="bi82primary" data="dd76"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutOverlay>
+        <HeatBoxParm name="bi82primary" tipListPolicy="replace" orient="vertical" display="CAPS FILL MEAN MEDIAN" connect="mean" boxWidth="0.800000011" binWidth="0.800000011" binDisplay="FILL OUTLINE" discreteOffset="0" tip="x Role1 min Q1 mean median Q3 max Role2 STD N" x="dd76#bi96" analysisLabel="dd76#bi109" dataMin="dd76#bi116" dataMax="dd76#bi126" min="dd76#bi107" max="dd76#bi115" Q1="dd76#bi112" Q3="dd76#bi113" mean="dd76#bi105" median="dd76#bi110" STD="dd76#bi114" N="dd76#bi106" binMin="dd76#bi117" binMax="dd76#bi127" binStartMin="dd76#bi118" binStartMax="dd76#bi128" binSizeMin="dd76#bi119" binSizeMax="dd76#bi129" group="dd76#bi109" fillAttrs="GraphDataStyle1" outlineAttrs="OutlinesUnfilled" meanAttrs="BoxMean" medianAttrs="BoxMedian" outlierAttrs="Outlier" whiskerAttrs="BoxWhisker" connectAttrs="ConnectLine">
+            <OutlierMinVars>
+                <Value>dd76#bi120</Value>
+                <Value>dd76#bi121</Value>
+                <Value>dd76#bi122</Value>
+                <Value>dd76#bi123</Value>
+                <Value>dd76#bi124</Value>
+                <Value>dd76#bi125</Value>
+            </OutlierMinVars>
+            <OutlierMaxVars>
+                <Value>dd76#bi130</Value>
+                <Value>dd76#bi131</Value>
+                <Value>dd76#bi132</Value>
+                <Value>dd76#bi133</Value>
+                <Value>dd76#bi134</Value>
+                <Value>dd76#bi135</Value>
+            </OutlierMaxVars>
+            <Roles>
+                <Role name="Role1" type="variable">dd76#bi111</Role>
+                <Role name="Role2" type="variable">dd76#bi108</Role>
+            </Roles>
+            <FillAttrs transparency="0"/>
+            <OutlineAttrs/>
+            <MeanAttrs/>
+            <MedianAttrs/>
+            <OutlierAttrs/>
+            <WhiskerAttrs/>
+            <ConnectAttrs/>
+        </HeatBoxParm>
+        <XAxisOpts gridDisplay="off">
+            <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data" tickValueAppearance="auto"/>
+        </XAxisOpts>
+        <YAxisOpts gridDisplay="on"/>
+    </LayoutOverlay>
+    <LayoutGlobalLegend hAlign="center" vAlign="bottom" position="bottom" visible="auto">
+        <DiscreteLegend border="false" vAlign="bottom" sortOrder="ascending">
+            <GraphNames>
+                <Value>bi82primary</Value>
+            </GraphNames>
+        </DiscreteLegend>
+    </LayoutGlobalLegend>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd83" name="ve80" data="dd73" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi96"/>
+                <Column variable="bi91"/>
+                <Column variable="bi86"/>
+                <Column variable="bi92"/>
+                <Column variable="bi84"/>
+                <Column variable="bi90"/>
+                <Column variable="bi93"/>
+                <Column variable="bi95"/>
+                <Column variable="bi87"/>
+                <Column variable="bi94"/>
+                <Column variable="bi85"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve37" name="vi35"/>
+                    <Visual ref="ve52" name="vi50"/>
+                </MediaContainer>
+            </Body>
+        </Section>
+        <Section name="vi69" label="Page 2">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve72" name="vi70"/>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="umstead"/>
+            <Stylesheet>
+<![CDATA[
+#ve52 .DataText {
+  font-style: normal;
+  font-size: 9pt;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi69</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.0.2" lastDate="2017-05-10T16:40:36Z"/>
+            <Version key="4.1.2" lastDate="2018-06-29T16:44:35Z"/>
+            <Version key="4.2.2" lastDate="2019-09-09T15:11:49Z"/>
+            <Version key="4.2.4" lastDate="2020-10-27T18:24:56Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.0.2" finalVersion="4.1.2" date="2018-06-29T16:44:34Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.2" date="2019-09-09T15:11:30Z"/>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2019-12-10T21:24:57Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-09T15:11:48.996Z"/>
+                <Revision editorVersion="8.5" lastDate="2019-12-10T21:25:42.615Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

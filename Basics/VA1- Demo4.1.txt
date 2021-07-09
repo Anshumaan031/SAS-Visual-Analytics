@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA1- Demo4.1" createdLocale="en_US" createdVersion="4.0.2" dateCreated="2017-03-30T02:12:45Z" dateModified="2019-12-10T22:32:43Z" createdApplication="SAS Visual Analytics 8.1" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="469">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds10" name="dd431">
+            <BusinessItems>
+                <RelationalDataItem binOption="calendar" maxCardinality="300" minCardinality="150" name="bi443" base="bi22"/>
+                <RelationalDataItem name="bi444" base="bi28"/>
+                <SyntheticDataItem name="bi445"/>
+                <SyntheticDataItem name="bi446"/>
+                <SyntheticDataItem name="bi447"/>
+                <RelationalDataItem name="bi448" base="bi165"/>
+                <SyntheticDataItem name="bi459"/>
+                <SyntheticDataItem name="bi460"/>
+                <SyntheticDataItem name="bi461"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds10" type="multidimensional" name="dd432">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi443"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi444"/>
+                            <BusinessItem ref="bi448"/>
+                        </Axis>
+                    </Axes>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRows="10000" maxRowsLookup="dualAxisTimeSeries" maxRowsBehavior="noData" name="dd433"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="CUSTOMERS_CLEAN" type="relational" name="ds10">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi11" xref="City"/>
+                <DataItem name="bi12" xref="Continent"/>
+                <DataItem name="bi13" label="Unit Cost" xref="Unit Cost"/>
+                <DataItem name="bi14" xref="Customer_BirthDate"/>
+                <DataItem name="bi15" xref="CustomerCountryLabel" usage="categorical">
+                    <GeoInfo geoType="external" coordinateSpace="WGS84">
+                        <Lookup property="longitude" externalSource="country.names"/>
+                        <Lookup property="latitude" externalSource="country.names"/>
+                        <Lookup property="polygonId" externalSource="country.names"/>
+                        <Lookup property="mapId" externalSource="country.names"/>
+                    </GeoInfo>
+                </DataItem>
+                <DataItem name="bi16" xref="Customer_Group"/>
+                <DataItem name="bi17" xref="Customer_Type"/>
+                <DataItem name="bi21" label="Delivery Date" xref="Delivery_Date" format="MONYY7"/>
+                <DataItem name="bi22" label="Order Date" xref="Order_Date"/>
+                <DataItem name="bi23" xref="Days to Delivery" format="COMMA6.1" aggregation="average"/>
+                <DataItem name="bi24" label="Discount" xref="Discount" aggregation="average"/>
+                <DataItem name="bi25" xref="OrderTypeLabel"/>
+                <DataItem name="bi27" xref="Postal_Code"/>
+                <DataItem name="bi28" xref="Profit"/>
+                <DataItem name="bi29" label="Quantity" xref="Quantity"/>
+                <DataItem name="bi30" label="Total Revenue" xref="Total Revenue"/>
+                <DataItem name="bi31" xref="State_Province"/>
+                <PredefinedDataItem calculation="totalCount" name="bi33" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi34" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <AggregateCalculatedItem dataType="double" name="bi164" label="Number of Customers" format="COMMA12.">
+                    <Expression>aggregate(countDistinct,group,${bi462,binned})</Expression>
+                </AggregateCalculatedItem>
+                <AggregateCalculatedItem dataType="double" name="bi165" label="Number of Orders" format="COMMA12.">
+                    <Expression>aggregate(countDistinct,group,${bi463,binned})</Expression>
+                </AggregateCalculatedItem>
+                <DataItem name="bi271" label="Average Profit" xref="Profit" aggregation="average"/>
+                <CalculatedItem dataType="double" name="bi285" label="Customer Age" usage="quantitative" format="COMMA12." aggregation="sum">
+                    <Expression>floor(div(minus(typecast(DOUBLE,datepart(now())),typecast(DOUBLE,${bi14,binned})),365.25))</Expression>
+                </CalculatedItem>
+                <Hierarchy name="bi421" label="Customer Hierarchy">
+                    <Level ref="bi16"/>
+                    <Level ref="bi466"/>
+                    <Level ref="bi425"/>
+                </Hierarchy>
+                <CalculatedItem dataType="string" name="bi425" label="Customer Age Group" usage="categorical" format="$." aggregation="sum">
+                    <Expression>cond(le(${bi285,raw},29),'29 and below',cond(between(${bi285,raw},30,44),'30-44 years',cond(between(${bi285,raw},45,59),'45-59 years',cond(between(${bi285,raw},60,74),'60-74 years','75 and above'))))</Expression>
+                </CalculatedItem>
+                <DataItem name="bi427" label="Order Month" xref="Order_Date" format="MONTH7"/>
+                <DataItem name="bi462" xref="Customer ID"/>
+                <DataItem name="bi463" xref="Order ID"/>
+                <DataItem name="bi464" xref="Customer_Name"/>
+                <DataItem name="bi465" xref="Loyalty Num"/>
+                <GroupedItem grouping="gr468" dataType="string" label="Loyalty Member" name="bi466">
+                    <GroupingParameters>
+                        <GroupingParameter parameter="bi465" variable="var467"/>
+                    </GroupingParameters>
+                </GroupedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="dualAxisTimeSeries" supplementalVisuals="ve442" resultDefinitions="dd433" name="ve430" data="dd431" label="Profit and Orders by Date" applyDynamicBrushes="yes">
+            <EditorProperties>
+                <Property key="timeSeriesBinOption">calendar</Property>
+                <Property key="timeSeriesFixedBinCardinality">300</Property>
+            </EditorProperties>
+            <Title auto="false"><P><Span>Profit and Orders by Date</Span></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TIME" description="TIME_VAR" required="true" assignedType="any" type="time">
+                <DefaultValues>
+                    <Value>dd433.bi443</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE" description="RESPONSE1_VAR" required="true" assignedType="any" type="numeric">
+                <DefaultValues>
+                    <Value>dd433.bi444</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE2" description="RESPONSE2_VAR" required="true" assignedType="any" type="numeric">
+                <DefaultValues>
+                    <Value>dd433.bi448</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="TIP" description="TIP_VAR" required="false" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd433.bi443</Value>
+                    <Value>dd433.bi444</Value>
+                    <Value>dd433.bi448</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutDataMatrix includeMissingClass="true">
+        <LayoutPrototypeOverlay2D cycleAttrs="true" alignVerticalAxisTicks="true">
+            <TimeSeriesPlot name="TimeSeriesPlot1" tipListPolicy="replace" _stmt="timeseriesplot" fadeType="auto" tip="TIP" time="TIME" responseVars="RESPONSE"/>
+            <TimeSeriesPlot name="TimeSeriesPlot2" tipListPolicy="replace" _stmt="timeseriesplot" yAxis="y2" fadeType="auto" tip="TIP" time="TIME" responseVars="RESPONSE2"/>
+            <XAxisOpts name="categoryAxis">
+                <DiscreteOpts tickValueAppearance="auto"/>
+                <TimeOpts splitTickValue="false" tickValueFormat="DATA"/>
+            </XAxisOpts>
+            <YAxisOpts>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+            <Y2AxisOpts>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </Y2AxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top">
+        <AutoLegend>
+            <GraphNames>
+                <Value>TimeSeriesPlot1</Value>
+                <Value>TimeSeriesPlot2</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd433" name="ve442" data="dd431" applyDynamicBrushes="yes" sourceInteractionVariables="bi443">
+            <Columns>
+                <Column variable="bi443" isVisible="true"/>
+                <Column variable="bi444" isVisible="true"/>
+                <Column variable="bi448" isVisible="true"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve430" name="vi428"/>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="umstead"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+    </Properties>
+    <Groupings>
+        <Grouping outputType="string" name="gr468">
+            <GroupingVariables>
+                <GroupingVariable variable="var467" type="string"/>
+            </GroupingVariables>
+            <Group>
+                <ValueExpression>'Yes'</ValueExpression>
+                <TestExpression>in(${var467,binned},'99')</TestExpression>
+            </Group>
+            <Group>
+                <ValueExpression>'No'</ValueExpression>
+                <TestExpression>in(${var467,binned},'00')</TestExpression>
+            </Group>
+            <Other>
+                <ValueExpression>'Other'</ValueExpression>
+            </Other>
+        </Grouping>
+    </Groupings>
+    <History>
+        <Versions>
+            <Version key="4.0.2" lastDate="2017-03-30T02:12:45Z"/>
+            <Version key="4.1.2" lastDate="2018-07-17T21:01:44Z"/>
+            <Version key="4.2.2" lastDate="2019-09-09T15:15:49Z"/>
+            <Version key="4.2.4" lastDate="2020-10-27T18:26:19Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.0.2" finalVersion="4.1.2" date="2018-07-17T21:01:43Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.2" date="2019-09-09T15:15:32Z"/>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2019-12-10T22:30:56Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-09T15:15:49.370Z"/>
+                <Revision editorVersion="8.5" lastDate="2019-12-10T22:32:42.053Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

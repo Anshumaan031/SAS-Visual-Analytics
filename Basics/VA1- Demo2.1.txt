@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA1- Demo2.1" createdLocale="en" createdVersion="4.2.2" dateCreated="2019-08-23T11:20:37Z" dateModified="2019-09-30T17:06:44Z" createdApplication="SAS Visual Analytics 8.4" lastModifiedApplication="SAS Visual Analytics 8.4" nextUniqueNameIndex="34">
+    <DataSources>
+        <DataSource label="CUSTOMERS" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="City"/>
+                <DataItem name="bi9" xref="Continent"/>
+                <DataItem name="bi10" xref="Cost"/>
+                <DataItem name="bi11" xref="Customer_BirthDate"/>
+                <DataItem name="bi12" xref="CustomerCountryLabel"/>
+                <DataItem name="bi13" xref="Customer_Group"/>
+                <DataItem name="bi14" xref="Customer_ID"/>
+                <DataItem name="bi15" xref="Customer_Name"/>
+                <DataItem name="bi16" xref="Customer_Type"/>
+                <DataItem name="bi17" xref="Delivery_Date"/>
+                <DataItem name="bi18" xref="Order_Date"/>
+                <DataItem name="bi19" xref="Discount"/>
+                <DataItem name="bi20" xref="Employee_ID"/>
+                <DataItem name="bi21" xref="Street_Name"/>
+                <DataItem name="bi22" xref="Order_ID"/>
+                <DataItem name="bi23" xref="OrderTypeLabel"/>
+                <DataItem name="bi24" xref="Postal_Code"/>
+                <DataItem name="bi25" xref="Product_ID"/>
+                <DataItem name="bi26" xref="Quantity"/>
+                <DataItem name="bi27" xref="RetailPrice"/>
+                <DataItem name="bi28" xref="State_Province"/>
+                <DataItem name="bi29" xref="Street_ID"/>
+                <DataItem name="bi30" xref="xyContinentLat"/>
+                <DataItem name="bi31" xref="xyContinentLon"/>
+                <PredefinedDataItem calculation="totalCount" name="bi32" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi33" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.2.2" lastDate="2019-09-09T16:15:09Z"/>
+            <Version key="4.2.4" lastDate="2020-10-27T18:24:13Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2020-10-27T18:23:33Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-09T16:15:09.255Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>
