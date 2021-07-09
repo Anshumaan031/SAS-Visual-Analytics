@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo8.1b" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-12-19T16:08:43Z" dateModified="2018-06-20T15:34:55Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="69">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd42">
+            <BusinessItems>
+                <RelationalDataItem binOption="formatBin" name="bi62" base="bi14"/>
+                <RelationalDataItem name="bi65" base="bi26"/>
+                <RelationalDataItem name="bi66" base="bi19"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd43">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi62"/>
+                            <BusinessItem ref="bi66"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi65"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi66" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="timeSeries" maxRowsBehavior="noData" name="dd44"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd51">
+            <BusinessItems>
+                <RelationalDataItem name="bi68" base="bi67"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd52">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi68"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi68" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd53"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="PRODUCTS_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="PRODUCTS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="City" hidden="true"/>
+                <DataItem name="bi9" xref="Continent" hidden="true"/>
+                <DataItem name="bi10" xref="Cost" hidden="true"/>
+                <DataItem name="bi11" xref="CountryLabel" hidden="true"/>
+                <DataItem name="bi12" xref="Customer_ID" hidden="true"/>
+                <DataItem name="bi13" xref="Delivery_Date" hidden="true"/>
+                <DataItem name="bi14" label="Order Date" xref="Order_Date" format="MONYY7"/>
+                <DataItem name="bi15" xref="Discount" hidden="true"/>
+                <DataItem name="bi16" xref="Employee_ID" hidden="true"/>
+                <DataItem name="bi17" xref="Street_Name" hidden="true"/>
+                <DataItem name="bi18" xref="Order_ID" hidden="true"/>
+                <DataItem name="bi19" xref="OrderTypeLabel"/>
+                <DataItem name="bi20" xref="Postal_Code" hidden="true"/>
+                <DataItem name="bi21" xref="Product_Category" hidden="true"/>
+                <DataItem name="bi22" xref="Product_Group" hidden="true"/>
+                <DataItem name="bi23" xref="Product_ID" hidden="true"/>
+                <DataItem name="bi24" xref="Product_Line" hidden="true"/>
+                <DataItem name="bi25" xref="Product_Name" hidden="true"/>
+                <DataItem name="bi26" label="Quantity" xref="Quantity"/>
+                <DataItem name="bi27" xref="RetailPrice" hidden="true"/>
+                <DataItem name="bi28" xref="State_Province" hidden="true"/>
+                <DataItem name="bi29" xref="Street_ID" hidden="true"/>
+                <DataItem name="bi30" xref="SupplierContinent" hidden="true"/>
+                <DataItem name="bi31" xref="SupplierCountryLabel" hidden="true"/>
+                <DataItem name="bi32" xref="Supplier_ID" hidden="true"/>
+                <DataItem name="bi33" xref="Supplier_Name" hidden="true"/>
+                <DataItem name="bi34" xref="xyContinentLat" hidden="true"/>
+                <DataItem name="bi35" xref="xyContinentLon" hidden="true"/>
+                <DataItem name="bi36" xref="xySupContLat" hidden="true"/>
+                <DataItem name="bi37" xref="xySupContLong" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi38" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi39" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi67" label="Order Quarter" xref="Order_Date" format="YYQC5"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="timeSeries" supplementalVisuals="ve46" resultDefinitions="dd44" name="ve41" data="dd42" label="Quantity by Order Type and Date" applyDynamicBrushes="yes">
+            <EditorProperties>
+                <Property key="timeSeriesBinOption">formatBin</Property>
+                <Property key="timeSeriesFixedBinCardinality">300</Property>
+            </EditorProperties>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TIME" description="TIME_VAR" required="true" assignedType="any" type="time">
+                <DefaultValues>
+                    <Value>dd44.bi62</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE" description="RESPONSE_VAR" required="true" assignedType="any" type="numeric" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd44.bi65</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="GROUP" description="SUBGROUP_VAR" required="false" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd44.bi66</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="TIP" description="TIP_VAR" required="false" assignedType="character" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd44.bi62</Value>
+                    <Value>dd44.bi65</Value>
+                    <Value>dd44.bi66</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+        <DataNameMap>
+            <Entry model="LayoutDataMatrix_44" data="dd44"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutDataMatrix name="LayoutDataMatrix_44" includeMissingClass="true">
+        <LayoutPrototypeOverlay2D>
+            <TimeSeriesPlot name="TimeSeriesPlot" tipListPolicy="replace" _stmt="timeseriesplot" primary="true" break="true" fadeType="auto" tip="TIP" group="GROUP" time="TIME" responseVars="RESPONSE"/>
+            <XAxisOpts name="categoryAxis" display="LABEL TICKVALUES">
+                <DiscreteOpts tickValueAppearance="auto"/>
+                <TimeOpts splitTickValue="false" tickValueFormat="DATA"/>
+            </XAxisOpts>
+            <YAxisOpts display="LABEL LINE TICKS TICKVALUES" gridDisplay="on" reverse="false">
+                <DiscreteOpts/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+                <TimeOpts/>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top" allowCollapsed="true">
+        <AutoLegend sortOrder="ascending">
+            <GraphNames>
+                <Value>TimeSeriesPlot</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <VisualContainer name="ve48" label="Layout Container 1" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">LAYOUT_CONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Table columnSizing="autoFill" resultDefinitions="dd53" name="ve50" data="dd51" label="Quarter Details" applyDynamicBrushes="yes" sourceInteractionVariables="bi68">
+            <Columns>
+                <Column variable="bi68" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Table columnSizing="autoFill" resultDefinitions="dd44" name="ve46" data="dd42" applyDynamicBrushes="yes" sourceInteractionVariables="bi62 bi66">
+            <Columns>
+                <Column variable="bi62"/>
+                <Column variable="bi65"/>
+                <Column variable="bi66"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Container ref="ve48" name="vi47">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="shrinkable"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="shrinkable"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                        <ResponsiveLayout orientation="vertical" overflow="grow"/>
+                        <Visual ref="ve41" name="vi40">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                        <Visual ref="ve50" name="vi49">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                    </Container>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T17:33:08Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:34:45Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:18:41Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:34:45Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:18:35Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

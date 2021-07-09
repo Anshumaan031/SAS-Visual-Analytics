@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo2.2 (Alternate)" createdLocale="en" createdVersion="4.1.2" dateCreated="2018-07-24T17:59:14Z" dateModified="2018-07-24T17:59:14Z" createdApplication="SAS Visual Analytics 8.3" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="29">
+    <DataSources>
+        <DataSource label="SPECIES" type="relational" hidden="true" name="ds15">
+            <CasResource server="cas-shared-default" library="Public" table="SPECIES" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi16" xref="Abundance"/>
+                <DataItem name="bi17" xref="Category"/>
+                <DataItem name="bi18" xref="Common Names"/>
+                <DataItem name="bi19" xref="Conservation Status"/>
+                <DataItem name="bi20" xref="Family"/>
+                <DataItem name="bi21" xref="Nativeness"/>
+                <DataItem name="bi22" xref="Occurrence"/>
+                <DataItem name="bi23" xref="Order"/>
+                <DataItem name="bi24" xref="Park Name"/>
+                <DataItem name="bi25" xref="Record Status"/>
+                <DataItem name="bi26" xref="Scientific Name"/>
+                <DataItem name="bi27" xref="Seasonality"/>
+                <DataItem name="bi28" xref="Species ID"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+    </Properties>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.1.2" lastDate="2018-07-24T17:59:14Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:21:34Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:21:31Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

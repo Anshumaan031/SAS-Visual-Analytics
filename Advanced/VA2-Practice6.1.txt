@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice6.1" createdLocale="en" createdVersion="4.2.2" dateCreated="2019-09-18T21:03:20Z" dateModified="2019-09-18T21:03:20Z" createdApplication="SAS Visual Analytics 8.4" lastModifiedApplication="SAS Visual Analytics 8.4" nextUniqueNameIndex="98">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd16">
+            <DataDefinition type="relational" name="dd17">
+                <RelationalQuery detail="true"/>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRows="40000" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd18"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd27">
+            <BusinessItems>
+                <SyntheticItems name="si36">
+                    <Item purpose="topicId" name="bi37"/>
+                    <Item purpose="topicName" name="bi38"/>
+                    <Item purpose="topicWeight" name="bi39"/>
+                    <Item purpose="documentCount" name="bi40"/>
+                </SyntheticItems>
+                <SyntheticItems name="si41">
+                    <Item purpose="status" name="bi42"/>
+                    <Item purpose="message" name="bi43"/>
+                </SyntheticItems>
+                <SyntheticItems name="si44">
+                    <Item purpose="scoreCode" name="bi45"/>
+                    <Item purpose="exportCodePrepend" name="bi46"/>
+                    <Item purpose="exportCodeAppend" name="bi47"/>
+                    <Item purpose="derivedCodePrepend" name="bi48"/>
+                    <Item purpose="derivedCodeAppend" name="bi49"/>
+                </SyntheticItems>
+                <SyntheticItems name="si50">
+                    <Item purpose="purpose" name="bi51"/>
+                    <Item purpose="xref" name="bi52"/>
+                    <Item purpose="usage" name="bi53"/>
+                    <Item purpose="stringLength" name="bi54"/>
+                    <Item purpose="level" name="bi55"/>
+                </SyntheticItems>
+                <SyntheticItems name="si56">
+                    <Item purpose="xref" name="bi57"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition type="procedural" name="dd28">
+                <ProceduralQuery type="textTopics" scoreCodeNumber="58">
+                    <GeneratedResources>
+                        <GeneratedData purpose="textAnalyticsData" name="ge34"/>
+                        <GeneratedTable purpose="astoreTable" name="ge35"/>
+                    </GeneratedResources>
+                    <Arguments>
+                        <Argument purpose="topicCount">
+                            <IntValue>-1</IntValue>
+                        </Argument>
+                        <Argument purpose="maxTopicCount">
+                            <IntValue>6</IntValue>
+                        </Argument>
+                        <Argument purpose="language">
+                            <StringValue/>
+                        </Argument>
+                        <Argument purpose="topicLabelTermCount">
+                            <IntValue>4</IntValue>
+                        </Argument>
+                        <Argument purpose="cellWeight">
+                            <StringValue>log</StringValue>
+                        </Argument>
+                        <Argument purpose="termWeight">
+                            <StringValue>entropy</StringValue>
+                        </Argument>
+                        <Argument purpose="entityExtraction">
+                            <StringValue>none</StringValue>
+                        </Argument>
+                        <Argument purpose="extractNounGroups">
+                            <BooleanValue>true</BooleanValue>
+                        </Argument>
+                        <Argument purpose="stemWords">
+                            <BooleanValue>true</BooleanValue>
+                        </Argument>
+                        <Argument purpose="tagPartsOfSpeech">
+                            <BooleanValue>true</BooleanValue>
+                        </Argument>
+                        <Argument purpose="minTermFrequency">
+                            <IntValue>4</IntValue>
+                        </Argument>
+                        <Argument purpose="tolerance">
+                            <DoubleValue>0.0</DoubleValue>
+                        </Argument>
+                        <Argument purpose="analyzeSentiment">
+                            <BooleanValue>false</BooleanValue>
+                        </Argument>
+                        <Argument purpose="useStopList">
+                            <BooleanValue>true</BooleanValue>
+                        </Argument>
+                        <Argument purpose="textTopicsLegendVisibility">
+                            <StringValue/>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" name="dd29" syntheticItems="si36"/>
+                    <ResultDefinition purpose="astore" name="dd30" syntheticItems="si41"/>
+                    <ResultDefinition purpose="scoreCode" name="dd31" syntheticItems="si44"/>
+                    <ResultDefinition purpose="scoreCodeNewColumns" name="dd32" syntheticItems="si50"/>
+                    <ResultDefinition purpose="scoreCodeXrefs" name="dd33" syntheticItems="si56"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd63">
+            <BusinessItems>
+                <SyntheticItems name="si66">
+                    <Item purpose="termId" name="bi67"/>
+                    <Item purpose="term" name="bi68"/>
+                    <Item purpose="role" name="bi69"/>
+                    <Item purpose="roleRaw" name="bi70"/>
+                    <Item purpose="topicWeight" name="bi71"/>
+                </SyntheticItems>
+                <SyntheticItems name="si94">
+                    <Item purpose="textSummary" name="bi96"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition type="procedural" name="dd64">
+                <ProceduralQuery type="textTerms">
+                    <ReferenceResources>
+                        <ReferenceData resource="ge34" generator="dd28" purpose="textAnalyticsData"/>
+                    </ReferenceResources>
+                    <Arguments>
+                        <Argument purpose="topic">
+                            <ReferenceValue>pr59</ReferenceValue>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" name="dd65" syntheticItems="si66"/>
+                    <ResultDefinition purpose="textSummary" name="dd95" syntheticItems="si94"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd78">
+            <BusinessItems>
+                <SyntheticItems name="si81">
+                    <Item purpose="documentId" name="bi82"/>
+                    <Item purpose="document" name="bi83"/>
+                    <Item purpose="relevanceLabel" name="bi84"/>
+                    <Item purpose="truncated" name="bi85"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition type="procedural" name="dd79">
+                <ProceduralQuery type="textDocuments">
+                    <ReferenceResources>
+                        <ReferenceData resource="ge34" generator="dd28" purpose="textAnalyticsData"/>
+                    </ReferenceResources>
+                    <Arguments>
+                        <Argument purpose="topic">
+                            <ReferenceValue>pr59</ReferenceValue>
+                        </Argument>
+                        <Argument purpose="term">
+                            <ReferenceValue>pr74</ReferenceValue>
+                        </Argument>
+                        <Argument purpose="role">
+                            <ReferenceValue>pr72</ReferenceValue>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd80" syntheticItems="si81"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="COURSES" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="COURSES" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="ATTENDEE"/>
+                <DataItem name="bi9" xref="COURSECODE"/>
+                <DataItem name="bi10" xref="DESCRIPT"/>
+                <DataItem name="bi11" xref="LEARNHOWTO"/>
+                <PredefinedDataItem calculation="totalCount" name="bi12" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi13" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <CompositeContainer composite="ve15" name="ve22" label="Text topics 1">
+            <EditorProperties>
+                <Property key="visualType">textAnalyticsContainer</Property>
+                <Property key="infoWindowSectionName">vi21</Property>
+                <Property key="isAutoLabel">true</Property>
+            </EditorProperties>
+        </CompositeContainer>
+        <Table resultDefinitions="dd18" name="ve19" data="dd16" applyDynamicBrushes="yes">
+            <Columns/>
+        </Table>
+        <VisualContainer name="ve23" label="Composite Subcontainer" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">COMPOSITE_SUBCONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Graph graphType="textTopics" resultDefinitions="dd29" name="ve25" data="dd27" label="Topics" applyDynamicBrushes="no">
+            <EditorProperties>
+                <Property key="textTopicsLegendVisibility">visible</Property>
+                <Property key="settingsTermParsing">automatic</Property>
+            </EditorProperties>
+            <Title><P><Span>Topics</Span></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="single" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TOPIC" description="TOPIC_VAR" required="true" assignedType="character" type="character">
+                <DefaultValues>
+                    <Value>dd29.bi38</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="DOCUMENT_COUNT" description="DOCUMENT_COUNT_VAR" required="true" assignedType="numeric" type="numeric" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd29.bi40</Value>
+                </DefaultValues>
+            </DynVar>
+        </DynVars>
+    </Meta>
+    <LayoutDataMatrix includeMissingClass="true">
+        <LayoutPrototypeOverlay2D wallDisplay="FILL">
+            <BarChartParm name="BarChart" dataTransparency="0.200000002" tipListPolicy="append" _stmt="barchart" groupDisplay="stack" orient="horizontal" stat="none" category="TOPIC" responseVars="DOCUMENT_COUNT">
+                <OutlineAttrs color="Outlines:line_color"/>
+            </BarChartParm>
+            <XAxisOpts name="categoryAxis" display="LABEL LINE TICKVALUES" gridDisplay="on">
+                <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data" tickValueAppearance="auto"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </XAxisOpts>
+            <YAxisOpts display="LABEL LINE TICKVALUES" gridDisplay="off" reverse="true">
+                <DiscreteOpts sortOrder="data"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend border="false" legendTitlePosition="top" allowCollapsed="true">
+        <AutoLegend>
+            <GraphNames>
+                <Value>BarChart</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Graph graphType="termCloud" resultDefinitions="dd65" name="ve61" data="dd63" label="Terms" applyDynamicBrushes="no">
+            <EditorProperties>
+                <Property key="textTermsLegendVisibility">visible</Property>
+            </EditorProperties>
+            <Title><P><Span>Terms</Span></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="single" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TERM" description="TERM_VAR" required="true" assignedType="character" type="character">
+                <DefaultValues>
+                    <Value>dd65.bi68</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="TERM_TOPIC_WEIGHT" description="TERM_TOPIC_WEIGHT_VAR" required="true" assignedType="numeric" type="numeric">
+                <DefaultValues>
+                    <Value>dd65.bi71</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="TIP" description="TIP_VAR" required="false" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd65.bi68</Value>
+                    <Value>dd65.bi71</Value>
+                    <Value>dd65.bi69</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutRegion>
+        <WordCloud name="WordCloud" tipListPolicy="replace" _stmt="wordCloud" arrangement="cloud" fontSizeFactor="4" maxTerms="100" tip="TIP" size="TERM_TOPIC_WEIGHT" category="TERM"/>
+    </LayoutRegion>
+    <LayoutGlobalLegend legendTitlePosition="top" allowCollapsed="true">
+        <SizeLegend border="false" opaque="false" extractScale="true" title_type="KEYWORD" title="AUTO">
+            <GraphNames>
+                <Value>WordCloud</Value>
+            </GraphNames>
+        </SizeLegend>
+        <ContinuousLegend border="false" opaque="false" valueStyle="inflections" displayMissing="automatic" extractScale="true" title_type="KEYWORD" title="AUTO">
+            <GraphNames>
+                <Value>WordCloud</Value>
+            </GraphNames>
+        </ContinuousLegend>
+    </LayoutGlobalLegend>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd80" name="ve76" data="dd78" label="Documents" action="ac88" applyDynamicBrushes="no">
+            <EditorProperties>
+                <Property key="visualType">documentTable</Property>
+            </EditorProperties>
+            <Title><P><Span>Documents</Span></P></Title>
+            <Columns>
+                <Column variable="bi84" isVisible="true"/>
+                <Column variable="bi83" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Table columnSizing="autoFill" resultDefinitions="dd29" name="ve86" data="dd27" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi38"/>
+                <Column variable="bi40"/>
+            </Columns>
+        </Table>
+        <Table columnSizing="autoFill" resultDefinitions="dd65" name="ve87" data="dd63" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi68"/>
+                <Column variable="bi71"/>
+                <Column variable="bi69"/>
+            </Columns>
+        </Table>
+        <Table resultDefinitions="dd95" name="ve97" data="dd63" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi96"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <CompositeVisuals>
+        <CompositeVisual label="Text topics 1" type="textAnalyticsContainer" supplementalVisuals="ve86 ve87 ve97" name="ve15">
+            <CompositeMember ref="ve25" role="primary"/>
+            <CompositeMember ref="ve61" role="supporting"/>
+            <CompositeMember ref="ve76" role="supporting"/>
+        </CompositeVisual>
+    </CompositeVisuals>
+    <PromptDefinitions>
+        <PromptDefinition hidden="true" labelFormatted="false" isParameter="true" name="pr59">
+            <StringConstraint userValuesAllowed="false" maxValueCount="1" minInclusive="true" maxInclusive="true"/>
+        </PromptDefinition>
+        <PromptDefinition hidden="true" labelFormatted="false" isParameter="true" name="pr72">
+            <StringConstraint userValuesAllowed="false" maxValueCount="1" minInclusive="true" maxInclusive="true"/>
+        </PromptDefinition>
+        <PromptDefinition hidden="true" labelFormatted="false" isParameter="true" name="pr74">
+            <StringConstraint userValuesAllowed="false" maxValueCount="1" minInclusive="true" maxInclusive="true"/>
+        </PromptDefinition>
+    </PromptDefinitions>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Container ref="ve22" name="vi14">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" preferredSizeBehavior="honor" flexibility="shrinkable"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" preferredSizeBehavior="honor" flexibility="shrinkable"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                        <ResponsiveLayout orientation="vertical" overflow="fit">
+                            <Weights mediaTarget="mt5" unit="percent">
+                                <Weight value="100%"/>
+                            </Weights>
+                            <Weights mediaTarget="mt4" unit="percent">
+                                <Weight value="100%"/>
+                            </Weights>
+                            <Weights mediaTarget="mt3" unit="percent">
+                                <Weight value="100%"/>
+                            </Weights>
+                        </ResponsiveLayout>
+                        <Container ref="ve23" name="vi24">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" preferredSizeBehavior="honor" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" preferredSizeBehavior="honor" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                            <ResponsiveLayout orientation="vertical" overflow="grow"/>
+                            <Visual ref="ve25" name="vi26">
+                                <ResponsiveConstraint>
+                                    <WidthConstraint>
+                                        <Width mediaTarget="mt3" preferredSizeBehavior="ignore" flexibility="flexible"/>
+                                    </WidthConstraint>
+                                    <HeightConstraint>
+                                        <Height mediaTarget="mt3" preferredSizeBehavior="ignore" value="70%" flexibility="flexible"/>
+                                    </HeightConstraint>
+                                </ResponsiveConstraint>
+                            </Visual>
+                            <Visual ref="ve61" name="vi62">
+                                <ResponsiveConstraint>
+                                    <WidthConstraint>
+                                        <Width mediaTarget="mt3" preferredSizeBehavior="ignore" flexibility="flexible"/>
+                                    </WidthConstraint>
+                                    <HeightConstraint>
+                                        <Height mediaTarget="mt3" preferredSizeBehavior="ignore" value="70%" flexibility="flexible"/>
+                                    </HeightConstraint>
+                                </ResponsiveConstraint>
+                            </Visual>
+                        </Container>
+                        <Visual ref="ve76" name="vi77">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" preferredSizeBehavior="ignore" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" preferredSizeBehavior="ignore" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                    </Container>
+                </MediaContainer>
+            </Body>
+        </Section>
+        <HiddenSection width="65%" height="65%" purpose="systemGeneratedInformation" name="vi21" label="Document Text">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve19" name="vi20"/>
+                </MediaContainer>
+            </Body>
+        </HiddenSection>
+    </View>
+    <Actions>
+        <NavigationAction type="section" value="vi21" label="Document Text" name="ac88"/>
+    </Actions>
+    <Interactions>
+        <Interaction name="ia60" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" ref="ve25" variable="bi38"/>
+            <InteractionElementReference purpose="target" variable="pr59"/>
+        </Interaction>
+        <Interaction name="ia73" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" ref="ve61" variable="bi70"/>
+            <InteractionElementReference purpose="target" variable="pr72"/>
+        </Interaction>
+        <Interaction name="ia75" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" ref="ve61" variable="bi68"/>
+            <InteractionElementReference purpose="target" variable="pr74"/>
+        </Interaction>
+        <Interaction name="ia89" type="filter" derived="true" action="ac88">
+            <InteractionElementReference purpose="source" ref="ve76"/>
+            <InteractionElementReference purpose="target" ref="ve19"/>
+        </Interaction>
+        <Interaction name="ia90" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" variable="pr59"/>
+            <InteractionElementReference purpose="target" ref="ve61" variable="pr59"/>
+        </Interaction>
+        <Interaction name="ia91" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" variable="pr59"/>
+            <InteractionElementReference purpose="target" ref="ve76" variable="pr59"/>
+        </Interaction>
+        <Interaction name="ia92" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" variable="pr72"/>
+            <InteractionElementReference purpose="target" ref="ve76" variable="pr72"/>
+        </Interaction>
+        <Interaction name="ia93" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" variable="pr74"/>
+            <InteractionElementReference purpose="target" ref="ve76" variable="pr74"/>
+        </Interaction>
+    </Interactions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet>
+<![CDATA[
+#ve19 .Table {
+  border-style: none;
+  wrap-text: normal;
+}
+#ve97 .Table {
+  wrap-text: normal;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.2.2" lastDate="2019-09-18T21:03:20Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:23:41Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2020-10-14T19:23:36Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-18T21:03:20.134Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

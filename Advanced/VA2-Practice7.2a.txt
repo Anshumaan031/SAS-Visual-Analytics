@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice7.2a" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-12-12T18:14:54Z" dateModified="2019-09-18T20:19:45Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="107">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd100">
+            <BusinessItems>
+                <RelationalDataItem name="bi45" base="bi17"/>
+                <RelationalDataItem name="bi65" base="bi18"/>
+                <RelationalDataItem name="bi80" base="bi20"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd101">
+                <MultidimensionalQuery rowSubtotals="false" columnSubtotals="true" rowTotals="true" columnTotals="true" detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi65"/>
+                            <BusinessItem ref="bi80"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi45"/>
+                        </Axis>
+                    </Axes>
+                    <RowSortItems>
+                        <SortItem ref="bi45" sortDirection="ascending"/>
+                    </RowSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="crosstab" maxRowsBehavior="noData" name="dd102"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="FACILITY_TOY_AMERICA" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="FACILITY_TOY_AMERICA" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Facility" hidden="true"/>
+                <DataItem name="bi9" xref="FacilityAge" hidden="true"/>
+                <DataItem name="bi10" xref="FacilityCity" hidden="true"/>
+                <DataItem name="bi11" xref="FacilityContinent" hidden="true"/>
+                <DataItem name="bi12" xref="FacilityCountry" hidden="true"/>
+                <DataItem name="bi13" xref="FacilityEfficiency" hidden="true"/>
+                <DataItem name="bi14" xref="FacilityEmployees" hidden="true"/>
+                <DataItem name="bi15" xref="FacilityOpeningDate" hidden="true"/>
+                <DataItem name="bi16" xref="FacilityRegion" hidden="true"/>
+                <DataItem name="bi17" xref="Unit"/>
+                <DataItem name="bi18" xref="UnitActual"/>
+                <DataItem name="bi19" xref="UnitAge" hidden="true"/>
+                <DataItem name="bi20" xref="UnitCapacity"/>
+                <DataItem name="bi21" xref="UnitDiscardRate" hidden="true"/>
+                <DataItem name="bi22" xref="UnitDiscards" hidden="true"/>
+                <DataItem name="bi23" xref="UnitLifespan" hidden="true"/>
+                <DataItem name="bi24" xref="UnitLifespanLimit" hidden="true"/>
+                <DataItem name="bi25" xref="UnitReliability" hidden="true"/>
+                <DataItem name="bi26" xref="UnitStatus" hidden="true"/>
+                <DataItem name="bi27" xref="UnitStatusCode" hidden="true"/>
+                <DataItem name="bi28" xref="UnitTarget" hidden="true"/>
+                <DataItem name="bi29" xref="UnitYieldRate" aggregation="average" hidden="true"/>
+                <DataItem name="bi30" xref="FacilityCityLat" hidden="true"/>
+                <DataItem name="bi31" xref="FacilityCityLon" hidden="true"/>
+                <DataItem name="bi32" xref="FacilityLat" hidden="true"/>
+                <DataItem name="bi33" xref="FacilityLon" hidden="true"/>
+                <DataItem name="bi34" xref="FacilityRegionLat" hidden="true"/>
+                <DataItem name="bi35" xref="FacilityRegionLon" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi36" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi37" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Crosstab resultDefinitions="dd102" name="ve40" data="dd100" label="Unit Analysis" applyDynamicBrushes="yes" sourceInteractionVariables="bi45">
+            <Axes>
+                <Axis type="row">
+                    <Hierarchy name="ve103" variable="bi45"/>
+                </Axis>
+                <Axis type="column">
+                    <Measures>
+                        <Measure name="ve105" variable="bi65"/>
+                        <Measure name="ve106" variable="bi80"/>
+                    </Measures>
+                </Axis>
+            </Axes>
+            <Summary>
+                <Total columnVisible="true" rowVisible="true"/>
+                <Subtotal columnVisible="false" rowVisible="false"/>
+            </Summary>
+        </Crosstab>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve40" name="vi39">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T18:27:49Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:44:50Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:33:50Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:44:50Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:33:46Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

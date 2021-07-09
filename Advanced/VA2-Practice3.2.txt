@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice3.2" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-11-20T18:47:26Z" dateModified="2020-02-24T16:54:30Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="47">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd22">
+            <BusinessItems>
+                <SyntheticItems name="si26">
+                    <Item purpose="algorithm" name="bi27"/>
+                    <Item purpose="dependentVariableLabel" name="bi28"/>
+                    <Item purpose="contributingIndependentVariables" name="bi29"/>
+                    <Item purpose="status" name="bi30"/>
+                    <Item purpose="firstForecastRow" name="bi31"/>
+                    <Item purpose="firstForecastDate" name="bi32"/>
+                    <Item purpose="actualLabel" name="bi33"/>
+                    <Item purpose="modelLabel" name="bi34"/>
+                    <Item purpose="contributingIndependentVariables_dataSourceNames" name="bi46"/>
+                </SyntheticItems>
+                <SyntheticItems name="si35">
+                    <Item purpose="aboutOutputInfo" name="bi36"/>
+                </SyntheticItems>
+                <SyntheticItems name="si42">
+                    <Item purpose="textSummary" name="bi44"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition type="procedural" name="dd23">
+                <ProceduralQuery type="forecast">
+                    <Arguments>
+                        <ListArgument purpose="dependentVariables"/>
+                        <Argument purpose="confidenceInterval">
+                            <DoubleValue>0.95</DoubleValue>
+                        </Argument>
+                        <Argument purpose="horizon">
+                            <IntValue>6</IntValue>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" name="dd24"/>
+                    <ResultDefinition purpose="dependentVarOutputInfo" name="dd37" syntheticItems="si26"/>
+                    <ResultDefinition purpose="aboutOutputInfoGroup" name="dd38" syntheticItems="si35"/>
+                    <ResultDefinition purpose="textSummary" name="dd43" syntheticItems="si42"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="MVAINJURIES" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="MVAINJURIES" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Date"/>
+                <DataItem name="bi9" xref="DVRatio"/>
+                <DataItem name="bi10" xref="Population" hidden="true"/>
+                <DataItem name="bi11" xref="Injuries"/>
+                <DataItem name="bi12" xref="Drivers" hidden="true"/>
+                <DataItem name="bi13" xref="Vehicles" hidden="true"/>
+                <DataItem name="bi14" xref="Teenager" hidden="true"/>
+                <DataItem name="bi15" xref="Seizure" hidden="true"/>
+                <DataItem name="bi16" xref="Sep2001" hidden="true"/>
+                <DataItem name="bi17" xref="TouristIndex"/>
+                <PredefinedDataItem calculation="totalCount" name="bi18" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi19" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <AggregateCalculatedItem dataType="double" name="bi41" label="Tourism Index (Difference from previous period)" format="BEST12.">
+                    <Expression>minus(relativePeriod(sum,${bi17,raw},allFiltersApply,${bi8,raw},inferred,0,full),relativePeriod(sum,${bi17,raw},allFiltersApply,${bi8,raw},inferred,-1,full))</Expression>
+                </AggregateCalculatedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="forecast" supplementalVisuals="ve39 ve45" resultDefinitions="dd24 dd38 dd37" name="ve21" data="dd22" label="Injuries by Date" applyDynamicBrushes="yes">
+            <EditorProperties>
+                <Property key="timeSeriesBinOption">formatBin</Property>
+                <Property key="timeSeriesFixedBinCardinality">300</Property>
+            </EditorProperties>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TIME" description="TIME_VAR" required="true" assignedType="time" type="time"/>
+            <DynVar name="RESPONSE" description="RESPONSE_VAR" required="true" assignedType="numeric" type="numeric" multiplesAllowed="true"/>
+        </DynVars>
+        <DataNameMap>
+            <Entry model="LayoutDataMatrix_37" data="dd24"/>
+            <Entry model="SampleReferenceLine" data="dd37"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutDataMatrix name="LayoutDataMatrix_37" includeMissingClass="true">
+        <LayoutPrototypeOverlay2D>
+            <ReferenceLine name="SampleReferenceLine" x="dd37#horizon" lineAttrs="Reference">
+                <LineAttrs/>
+            </ReferenceLine>
+            <BandPlot name="SampleBandPlot" dataTransparency="0.660000026" x="TIME" limitUpper="dd24#limitUpper" limitLower="dd24#limitLower" fillAttrs="GraphDataStyle1">
+                <FillAttrs/>
+            </BandPlot>
+            <TimeSeriesPlot name="SampleModelTimeSeriesPlot" _stmt="timeseriesplot" primary="true" fadeType="auto" time="TIME" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE" vertexLabelAttrs="GraphDataStyle2147483374" lineAttrs="GraphDataStyle2147483374">
+                <VertexLabelAttrs/>
+                <LineAttrs/>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE">
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE">
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0" responseVars="RESPONSE">
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <TimeSeriesPlot name="SampleActualTimeSeriesPlot" display="MARKERS" time="dd24#TIME_0">
+                <ResponseVars>
+                    <Value>dd24#actual</Value>
+                </ResponseVars>
+                <MarkerAttrs symbol="CIRCLE"/>
+            </TimeSeriesPlot>
+            <XAxisOpts name="categoryAxis">
+                <TimeOpts splitTickValue="false" tickValueFormat="DATA"/>
+            </XAxisOpts>
+            <YAxisOpts>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top">
+        <AutoLegend/>
+    </LayoutGlobalLegend>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd37" name="ve39" data="dd22" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi28"/>
+                <Column variable="bi27"/>
+            </Columns>
+        </Table>
+        <Table resultDefinitions="dd43" name="ve45" data="dd22" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi44"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve21" name="vi20">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet>
+<![CDATA[
+#ve45 .Table {
+  wrap-text: normal;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T17:57:23Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:40:44Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:22:40Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:40:44Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-02-24T16:54:15Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2020-02-24T16:54:30.533Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

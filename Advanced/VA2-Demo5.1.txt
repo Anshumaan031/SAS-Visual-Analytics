@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo5.1" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-11-30T11:04:21Z" dateModified="2018-07-30T14:51:08Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="108">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd54">
+            <BusinessItems>
+                <RelationalDataItem name="bi57" base="bi8"/>
+                <RelationalDataItem name="bi58" base="bi9"/>
+                <RelationalDataItem name="bi59" base="bi11"/>
+                <RelationalDataItem name="bi60" base="bi10"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd55">
+                <RelationalQuery detail="true">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi57"/>
+                            <BusinessItem ref="bi58"/>
+                            <BusinessItem ref="bi59"/>
+                            <BusinessItem ref="bi60"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi57" sortDirection="ascending"/>
+                        <SortItem ref="bi59" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd56"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd64">
+            <BusinessItems>
+                <SyntheticItems name="si69">
+                    <Item purpose="itemType" name="bi70"/>
+                    <Item purpose="itemTypeLabel" name="bi71"/>
+                    <Item purpose="id" name="bi72"/>
+                    <Item purpose="label" name="bi73"/>
+                    <Item purpose="eventValue" name="bi74"/>
+                    <Item purpose="from" name="bi75"/>
+                    <Item purpose="to" name="bi76"/>
+                    <Item purpose="fromLabel" name="bi77"/>
+                    <Item purpose="toLabel" name="bi78"/>
+                    <Item purpose="pathId" name="bi79"/>
+                    <Item purpose="sequence" name="bi80"/>
+                    <Item purpose="pathFrequency" name="bi81"/>
+                    <Item purpose="pathWeight" name="bi82"/>
+                </SyntheticItems>
+                <SyntheticItems name="si83">
+                    <Item purpose="itemType" name="bi84"/>
+                    <Item purpose="itemTypeLabel" name="bi85"/>
+                    <Item purpose="id" name="bi86"/>
+                    <Item purpose="label" name="bi87"/>
+                    <Item purpose="eventValue" name="bi88"/>
+                    <Item purpose="from" name="bi89"/>
+                    <Item purpose="to" name="bi90"/>
+                    <Item purpose="fromLabel" name="bi91"/>
+                    <Item purpose="toLabel" name="bi92"/>
+                    <Item purpose="linkFrequency" name="bi93"/>
+                    <Item purpose="linkWeight" name="bi94"/>
+                    <Item purpose="isDropOff" name="bi95"/>
+                    <Item purpose="inItemFrequency" name="bi96"/>
+                    <Item purpose="outItemFrequency" name="bi97"/>
+                    <Item purpose="inItemWeight" name="bi98"/>
+                    <Item purpose="outItemWeight" name="bi99"/>
+                </SyntheticItems>
+                <SyntheticItems name="si104">
+                    <Item purpose="textSummary" name="bi106"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition type="procedural" name="dd65">
+                <ProceduralQuery type="sankey">
+                    <Arguments>
+                        <Argument purpose="minPathLength">
+                            <IntValue>1</IntValue>
+                        </Argument>
+                        <Argument purpose="maxPathLength">
+                            <IntValue>0</IntValue>
+                        </Argument>
+                        <Argument purpose="minSequenceFrequency">
+                            <IntValue>1</IntValue>
+                        </Argument>
+                        <Argument purpose="maxSequenceFrequency">
+                            <IntValue>0</IntValue>
+                        </Argument>
+                        <Argument purpose="pathRankingStart">
+                            <StringValue>top</StringValue>
+                        </Argument>
+                        <Argument purpose="pathRankingCount">
+                            <IntValue>200</IntValue>
+                        </Argument>
+                        <Argument purpose="compress">
+                            <BooleanValue>false</BooleanValue>
+                        </Argument>
+                        <Argument purpose="pathRankedBy">
+                            <StringValue>weight</StringValue>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" name="dd66" syntheticItems="si69"/>
+                    <ResultDefinition purpose="eventInfo" name="dd67" syntheticItems="si83"/>
+                    <ResultDefinition purpose="textSummary" name="dd105" syntheticItems="si104"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="SIMPLE_PATH" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="SIMPLE_PATH" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="id" usage="categorical" format="F12.0"/>
+                <DataItem name="bi9" xref="page"/>
+                <DataItem name="bi10" xref="purchase" format="DOLLAR12.2"/>
+                <DataItem name="bi11" xref="time"/>
+                <PredefinedDataItem calculation="totalCount" name="bi12" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi13" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <GroupedItem grouping="gr103" dataType="string" label="Grouped Pages" name="bi101">
+                    <GroupingParameters>
+                        <GroupingParameter parameter="bi9" variable="var102"/>
+                    </GroupingParameters>
+                </GroupedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Table columnSizing="autoFill" resultDefinitions="dd56" name="ve53" data="dd54" label="List Table 1" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi57" isVisible="true"/>
+                <Column variable="bi58" isVisible="true"/>
+                <Column variable="bi59" isVisible="true"/>
+                <Column variable="bi60" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Graph graphType="sankey" supplementalVisuals="ve68 ve107" resultDefinitions="dd66 dd67" name="ve63" data="dd64" label="Web Site Analysis" applyDynamicBrushes="no">
+            <EditorProperties>
+                <Property key="nodeLabels">true</Property>
+                <Property key="linkWidthAggregation">frequency</Property>
+                <Property key="linkColor">dropOff</Property>
+            </EditorProperties>
+<![CDATA[<StatGraph opaque="false" includeMissingDiscrete="true" selectionMode="none" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DataNameMap>
+            <Entry model="LayoutRegion" data="dd67"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutRegion name="LayoutRegion">
+        <SankeyDiagram name="SankeyDiagram" direction="right" display="VOLUMEBARS VOLUMELABELS" linkAlignment="stack" volumeBarType="bar" volumeLabelType="auto" type="dd67#type" nodeId="dd67#id" nodeLabel="dd67#label" linkId="dd67#id" fromId="dd67#fromId" toId="dd67#toId" linkWidthResponse="dd67#linkWidthItemFrequency" linkColorGroup="dd67#dropOff">
+            <NodeTip>
+                <Value>dd67#label</Value>
+            </NodeTip>
+            <LinkTip>
+                <Value>dd67#linkWidthItemFrequency</Value>
+            </LinkTip>
+        </SankeyDiagram>
+    </LayoutRegion>
+    <LayoutGlobalLegend>
+        <SizeLegend border="false" opaque="false" title_type="KEYWORD" title="AUTO">
+            <GraphNames>
+                <Value>SankeyDiagram</Value>
+            </GraphNames>
+        </SizeLegend>
+        <AutoLegend opaque="false" sortOrder="ascending">
+            <GraphNames>
+                <Value>SankeyDiagram</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd67" name="ve68" data="dd64" applyDynamicBrushes="yes"/>
+        <Table resultDefinitions="dd105" name="ve107" data="dd64" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi106"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi61" label="Path Analysis">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve63" name="vi62">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+        <Section name="vi6" label="Details">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve53" name="vi52">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet>
+<![CDATA[
+#ve107 .Table {
+  wrap-text: normal;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi61</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <Groupings>
+        <Grouping outputType="string" name="gr103">
+            <GroupingVariables>
+                <GroupingVariable variable="var102" type="string"/>
+            </GroupingVariables>
+            <Group>
+                <ValueExpression>'Buy'</ValueExpression>
+                <TestExpression>in(${var102,binned},'Add to Cart','Checkout','Order Receipt','Submit Order')</TestExpression>
+            </Group>
+            <Group>
+                <ValueExpression>'Search'</ValueExpression>
+                <TestExpression>in(${var102,binned},'Search','Search Results')</TestExpression>
+            </Group>
+            <Group>
+                <ValueExpression>'Products'</ValueExpression>
+                <TestExpression>in(${var102,binned},'Books','Deals','Music','Products','View Product')</TestExpression>
+            </Group>
+            <Other>
+                <ValueExpression>${var102,binned}</ValueExpression>
+            </Other>
+        </Grouping>
+    </Groupings>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T16:17:38Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T14:34:21Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:15:43Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T14:34:21Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:15:39Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice7.1a" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-12-01T20:11:02Z" dateModified="2019-12-11T19:46:46Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="69">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd27">
+            <DataDefinition type="relational" name="dd28">
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="graphDefault" maxRowsBehavior="noData" name="dd29"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="EMPLOYEES_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="EMPLOYEES_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi9" label="Salary" xref="Salary"/>
+                <DataItem name="bi10" xref="Company" hidden="true"/>
+                <DataItem name="bi11" xref="Department" hidden="true"/>
+                <DataItem name="bi12" xref="Employee_Country"/>
+                <DataItem name="bi13" xref="Employee_Hire_Date"/>
+                <DataItem name="bi16" xref="Employee_Term_Date"/>
+                <DataItem name="bi17" xref="Org_Group" hidden="true"/>
+                <DataItem name="bi18" xref="Job_Title"/>
+                <DataItem name="bi19" xref="Manager ID" hidden="true"/>
+                <DataItem name="bi21" xref="Total_Orders" hidden="true"/>
+                <DataItem name="bi22" xref="Total_Profit" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi23" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi24" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi31" xref="Anniversary Month" hidden="true"/>
+                <DataItem name="bi32" xref="Employee ID" hidden="true"/>
+                <DataItem name="bi33" xref="Employee_Name" hidden="true"/>
+                <CalculatedItem dataType="double" name="bi68" label="Salary (America/Oceania)" usage="quantitative" format="DOLLAR12.2" aggregation="average">
+                    <Expression>cond(in(${bi12,binned},'AU','US'),${bi9,raw},.)</Expression>
+                </CalculatedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="butterfly" supplementalVisuals="ve30" resultDefinitions="dd29" name="ve26" data="dd27" label="Salary by Gender and Job Title" applyDynamicBrushes="yes">
+            <Title auto="true"><P><DynamicSpan key="bird.autotitle.template.oneCommaTwoByThree.fmt.txt"><Substitutions><Substitution key="bird.autotitle.measureBar.txt"/><Substitution key="bird.autotitle.measureBar2.txt"/><Substitution key="bird.autotitle.category.txt"/></Substitutions></DynamicSpan></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="CATEGORY" description="CATEGORY_VAR" required="true" type="character" multiplesAllowed="false"/>
+            <DynVar name="DYNVAR_1" description="BAR_MEASURE1_VAR" required="true" type="numeric" multiplesAllowed="false"/>
+            <DynVar name="DYNVAR_3" description="BAR_MEASURE2_VAR" required="true" type="numeric" multiplesAllowed="false"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutLattice rowDataRange="union" columnDataRange="union_all" columns="2">
+        <Cell name="A1">
+            <LayoutOverlay>
+                <BarChartParm name="BarChart_0" tipListPolicy="replace" _stmt="barchart" groupDisplay="cluster" orient="horizontal" stat="none" tip="TIP" category="CATEGORY" responseVars="DYNVAR_1">
+                    <OutlineAttrs color="Outlines:line_color"/>
+                    <FillAttrs color="GraphDataStyle1:fill_color"/>
+                </BarChartParm>
+            </LayoutOverlay>
+        </Cell>
+        <Cell name="B1">
+            <LayoutOverlay>
+                <BarChartParm name="BarChart_1" tipListPolicy="replace" _stmt="barchart" groupDisplay="cluster" orient="horizontal" stat="none" tip="TIP" category="CATEGORY" responseVars="DYNVAR_3">
+                    <OutlineAttrs color="Outlines:line_color"/>
+                    <FillAttrs color="GraphDataStyle2:fill_color"/>
+                </BarChartParm>
+            </LayoutOverlay>
+        </Cell>
+        <ColumnAxes>
+            <ColumnAxis reverse="true">
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </ColumnAxis>
+            <ColumnAxis>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </ColumnAxis>
+        </ColumnAxes>
+        <RowAxes>
+            <RowAxis type="discrete" reverse="true">
+                <DiscreteOpts tickValueFitPolicy="thin" sortOrder="data"/>
+            </RowAxis>
+        </RowAxes>
+    </LayoutLattice>
+    <LayoutGlobalLegend legendTitlePosition="top" allowCollapsed="true">
+        <AutoLegend>
+            <GraphNames>
+                <Value>BarChart_0</Value>
+                <Value>BarChart_1</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd29" name="ve30" data="dd27" applyDynamicBrushes="yes"/>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve26" name="vi25">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T18:21:25Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:43:07Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:32:54Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:43:07Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2019-12-11T19:33:41Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2019-12-11T19:46:44.568Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice9.3" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2018-01-09T20:22:46Z" dateModified="2019-09-18T20:21:33Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="42">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd27">
+            <BusinessItems>
+                <RelationalDataItem name="bi30" base="bi15"/>
+                <RelationalDataItem name="bi31" base="bi22"/>
+                <RelationalDataItem name="bi32" base="bi10"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd28">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi30"/>
+                            <BusinessItem ref="bi31"/>
+                            <BusinessItem ref="bi32"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi30" sortDirection="ascending"/>
+                        <SortItem ref="bi31" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd29"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" dataSource="ds7" name="dd37">
+            <BusinessItems>
+                <RelationalDataItem name="bi41" base="bi15"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd38">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi41"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi41" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="graphDefault" maxRowsBehavior="truncate" name="dd39"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="CUSTOMERS_TOY" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS_TOY" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Customer" hidden="true"/>
+                <DataItem name="bi9" xref="CustomerDistance" hidden="true"/>
+                <DataItem name="bi10" xref="CustomerSatisfaction" aggregation="average"/>
+                <DataItem name="bi11" xref="Order" hidden="true"/>
+                <DataItem name="bi12" xref="Product" hidden="true"/>
+                <DataItem name="bi13" xref="ProductBrand" hidden="true"/>
+                <DataItem name="bi14" xref="ProductCostOfSale" hidden="true"/>
+                <DataItem name="bi15" xref="ProductLine"/>
+                <DataItem name="bi16" xref="ProductMake" hidden="true"/>
+                <DataItem name="bi17" xref="ProductMaterialCost" hidden="true"/>
+                <DataItem name="bi18" xref="ProductPriceTarget" hidden="true"/>
+                <DataItem name="bi19" xref="ProductQuality" hidden="true"/>
+                <DataItem name="bi20" xref="ProductPriceActual" hidden="true"/>
+                <DataItem name="bi21" xref="ProductStyle" hidden="true"/>
+                <DataItem name="bi22" xref="TransactionDate" format="MONTH7"/>
+                <PredefinedDataItem calculation="totalCount" name="bi23" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi24" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Table columnSizing="autoFill" resultDefinitions="dd29" name="ve26" data="dd27" label="Customer Satisfaction by Product Line and Date" applyDynamicBrushes="yes" sourceInteractionVariables="bi30 bi31">
+            <Columns>
+                <Column variable="bi30" isVisible="true"/>
+                <Column variable="bi31" isVisible="true"/>
+                <Column variable="bi32" isVisible="true"/>
+            </Columns>
+        </Table>
+        <VisualContainer name="ve34" label="Layout Container 1" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">LAYOUT_CONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Graph graphType="targetedBar" supplementalVisuals="ve40" resultDefinitions="dd39" name="ve36" data="dd37" label="Customer Satisfaction (Selected Month vs Prior Month)" applyDynamicBrushes="yes" sourceInteractionVariables="bi41">
+            <Title auto="true"><P><DynamicSpan key="bird.autotitle.template.oneByTwoToThree.fmt.txt"><Substitutions><Substitution key="bird.autotitle.measure.txt"/><Substitution valueType="label" variables="bi15"/><Substitution key="bird.autotitle.target.txt"/></Substitutions></DynamicSpan></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="CATEGORY" description="CATEGORY_VAR" required="true" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd39.bi41</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE" description="MEASURE_VAR" required="true" type="numeric"/>
+            <DynVar name="TARGET" description="TARGET_VAR" required="true" type="numeric"/>
+            <DynVar name="COLUMN" description="HORIZONTAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="ROW" description="VERTICAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" assignedType="character" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd39.bi41</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="KEY_FRAME" description="ANIMATION" required="false" type="time" multiplesAllowed="false"/>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutDataMatrix includeMissingClass="true" rowVars="ROW" columnVars="COLUMN">
+        <LayoutPrototypeOverlay2D>
+            <BarChartParm name="TargetedBarChart" tipListPolicy="replace" _stmt="barchart" stat="none" tip="TIP" category="CATEGORY" responseVars="RESPONSE" target="TARGET">
+                <OutlineAttrs color="Outlines:line_color"/>
+            </BarChartParm>
+            <XAxisOpts name="categoryAxis">
+                <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data" tickValueAppearance="auto"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </XAxisOpts>
+            <YAxisOpts>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <Animation keyFrame="KEY_FRAME"/>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd39" name="ve40" data="dd37" applyDynamicBrushes="yes"/>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Container ref="ve34" name="vi33">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="shrinkable"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="shrinkable"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                        <ResponsiveLayout orientation="vertical" overflow="grow"/>
+                        <Visual ref="ve26" name="vi25">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                        <Visual ref="ve36" name="vi35">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                    </Container>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2018-01-09T20:22:46Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:52:43Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:37:08Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:52:43Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:37:04Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

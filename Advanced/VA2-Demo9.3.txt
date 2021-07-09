@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo9.3" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-12-11T20:57:45Z" dateModified="2020-11-09T17:25:30Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5.1" nextUniqueNameIndex="47">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd19">
+            <BusinessItems>
+                <RelationalDataItem name="bi23" base="bi11"/>
+                <RelationalDataItem name="bi25" base="bi14"/>
+                <RelationalFilterItem name="bi26">
+                    <EditorProperties>
+                        <Property key="complexity">SINGLE_DATA_ITEM</Property>
+                        <Property key="interactiveEditingAllowed">TRUE</Property>
+                    </EditorProperties>
+                    <Expression>in(${bi25,binned},'AU','DA','HO')</Expression>
+                </RelationalFilterItem>
+                <RelationalDataItem name="bi35" base="bi34"/>
+                <RelationalDataItem name="bi36" base="bi8"/>
+                <RelationalFilterItem label="Selected Date Plus 90 Days" name="bi45">
+                    <EditorProperties>
+                        <Property key="complexity">ADVANCED</Property>
+                    </EditorProperties>
+                    <Expression>between(${bi35,binned},#{pr37},typecast(DATE,plus(typecast(DOUBLE,#{pr37}),90)))</Expression>
+                </RelationalFilterItem>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd20">
+                <MultidimensionalQuery detail="true">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi23"/>
+                            <BusinessItem ref="bi25"/>
+                            <BusinessItem ref="bi35"/>
+                            <BusinessItem ref="bi36"/>
+                        </Axis>
+                        <Axis type="row"/>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi23" sortDirection="ascending"/>
+                        <SortItem ref="bi25" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="graphDefault" maxRowsBehavior="noData" name="dd21"/>
+                </ResultDefinitions>
+            </DataDefinition>
+            <AppliedFilters>
+                <DetailFilters>
+                    <BusinessItem ref="bi26"/>
+                    <BusinessItem ref="bi45"/>
+                </DetailFilters>
+            </AppliedFilters>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd40">
+            <BusinessItems>
+                <RelationalDataItem name="bi44" base="bi34"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd41">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi44"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi44" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="textInput" maxRowsBehavior="truncate" name="dd42"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="PG1" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="PG1" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="DELIVERED_DATE"/>
+                <DataItem name="bi9" xref="CourseLength"/>
+                <DataItem name="bi10" xref="LOB"/>
+                <DataItem name="bi11" xref="PRODUCT_CODE"/>
+                <DataItem name="bi12" xref="COUNTRY"/>
+                <DataItem name="bi13" xref="id" usage="categorical" format="F12.0"/>
+                <DataItem name="bi14" xref="TC_CODE"/>
+                <PredefinedDataItem calculation="totalCount" name="bi15" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi16" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <CalculatedItem dataType="date" name="bi34" label="Event Delivered (Start) Date" usage="categorical" format="DATE9" aggregation="sum">
+                    <Expression>typecast(DATE,plus(minus(typecast(DOUBLE,${bi8,binned}),${bi9,raw}),1))</Expression>
+                </CalculatedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="schedule" supplementalVisuals="ve22" resultDefinitions="dd21" name="ve18" data="dd19" label="Schedule of Classes" applyDynamicBrushes="yes">
+            <Title auto="true"><P><DynamicSpan key="bird.autotitle.template.oneFromTwoToThree.fmt.txt"><Substitutions><Substitution valueType="label" variables="bi11"/><Substitution valueType="label" variables="bi34"/><Substitution valueType="label" variables="bi8"/></Substitutions></DynamicSpan></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TASK" description="TASK_VAR" required="true" assignedType="any" type="character" multiplesAllowed="false">
+                <DefaultValues>
+                    <Value>dd21.bi23</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="START" description="START_VAR" required="true" assignedType="any" type="time" multiplesAllowed="false">
+                <DefaultValues>
+                    <Value>dd21.bi35</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="FINISH" description="FINISH_VAR" required="true" assignedType="any" type="time" multiplesAllowed="false">
+                <DefaultValues>
+                    <Value>dd21.bi36</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="GROUP" description="SUBGROUP_VAR" required="false" assignedType="any" type="character" multiplesAllowed="false">
+                <DefaultValues>
+                    <Value>dd21.bi25</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="LABEL" description="LABEL_VAR" required="false" type="any" multiplesAllowed="false"/>
+            <DynVar name="COLUMN" description="HORIZONTAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="ROW" description="VERTICAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" assignedType="time" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd21.bi23</Value>
+                    <Value>dd21.bi25</Value>
+                    <Value>dd21.bi35</Value>
+                    <Value>dd21.bi36</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutDataMatrix rowVars="ROW" columnVars="COLUMN">
+        <LayoutPrototypeOverlay2D cycleAttrs="true">
+            <ScheduleChart name="ScheduleChart" tipListPolicy="replace" _stmt="schedulechart" legendLabel="Schedule Chart " display="FILL OUTLINE" tip="TIP" start="START" finish="FINISH" task="TASK" group="GROUP" dataLabel="LABEL"/>
+            <XAxisOpts name="categoryAxis" gridDisplay="on">
+                <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+                <TimeOpts splitTickValue="false" tickValueFormat="DATA"/>
+            </XAxisOpts>
+            <YAxisOpts type="discrete" gridDisplay="off" reverse="true">
+                <DiscreteOpts tickValueFitPolicy="thin" sortOrder="data" tickValueAppearance="auto"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top" allowCollapsed="true">
+        <AutoLegend sortOrder="ascending">
+            <GraphNames>
+                <Value>ScheduleChart</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd21" name="ve22" data="dd19" applyDynamicBrushes="yes">
+            <Columns>
+                <Column variable="bi23"/>
+                <Column variable="bi35"/>
+                <Column variable="bi36"/>
+                <Column variable="bi25"/>
+            </Columns>
+        </Table>
+        <Prompt ref="pr37" name="ve39" label="Date Selector" selectionDisabled="true" applyDynamicBrushes="promptsOnly" sourceInteractionVariables="bi44">
+            <EditorProperties>
+                <Property key="autoChartCategory">CONTROL</Property>
+            </EditorProperties>
+            <Title><P><Span>Specify a date (ddMmmYYYY) to view details for the next 90 days: </Span></P></Title>
+            <TextField/>
+        </Prompt>
+    </VisualElements>
+    <PromptDefinitions>
+        <PromptDefinition data="dd40" label="DateParameter" isParameter="true" format="DATE9" labelVariable="bi44" valueVariable="bi44" resultDefinitions="dd42" name="pr37">
+            <DefaultValue>
+                <Date value="18751.0" dataType="date"/>
+            </DefaultValue>
+            <DateConstraint dataType="date" min="17091.0" max="21427.0" minInclusive="true" maxInclusive="true"/>
+        </PromptDefinition>
+    </PromptDefinitions>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve39" name="vi38">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="fixed"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                    <Visual ref="ve18" name="vi17">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <Interactions>
+        <Interaction name="ia46" type="parameter" dataStage="detail" derived="true">
+            <InteractionElementReference purpose="source" ref="ve39" variable="pr37"/>
+            <InteractionElementReference purpose="target" ref="ve18" variable="pr37"/>
+        </Interaction>
+    </Interactions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T19:34:39Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:38:29Z"/>
+            <Version key="4.2.4" lastDate="2020-11-09T17:25:38Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:38:29Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-11-09T17:24:28Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5.1" lastDate="2020-11-09T17:25:30.236Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

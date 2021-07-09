@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo1.2" createdLocale="en" createdVersion="4.2.2" dateCreated="2019-09-27T16:53:45Z" dateModified="2019-09-27T16:53:45Z" createdApplication="SAS Visual Analytics 8.4" lastModifiedApplication="SAS Visual Analytics 8.4" nextUniqueNameIndex="96">
+    <DataSources>
+        <DataSource label="SPECIES" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="SPECIES" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Abundance"/>
+                <DataItem name="bi9" xref="Category"/>
+                <DataItem name="bi10" xref="Common Names"/>
+                <DataItem name="bi11" xref="Conservation Status"/>
+                <DataItem name="bi12" xref="Family"/>
+                <DataItem name="bi13" xref="Nativeness"/>
+                <DataItem name="bi14" xref="Occurrence"/>
+                <DataItem name="bi15" xref="Order"/>
+                <DataItem name="bi16" xref="Park Name"/>
+                <DataItem name="bi17" xref="Record Status"/>
+                <DataItem name="bi18" xref="Scientific Name"/>
+                <DataItem name="bi19" xref="Seasonality"/>
+                <DataItem name="bi20" xref="Species ID"/>
+                <PredefinedDataItem calculation="totalCount" name="bi21" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi22" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <GroupedItem grouping="gr95" dataType="string" label="Threat Level" name="bi93">
+                    <GroupingParameters>
+                        <GroupingParameter parameter="bi11" variable="var94"/>
+                    </GroupingParameters>
+                </GroupedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <Groupings>
+        <Grouping outputType="string" name="gr95">
+            <GroupingVariables>
+                <GroupingVariable variable="var94" type="string"/>
+            </GroupingVariables>
+            <Group>
+                <ValueExpression>'Not Threatened'</ValueExpression>
+                <TestExpression>in(${var94,binned},'Breeder','In Recovery','Migratory','Resident','Under Review')</TestExpression>
+            </Group>
+            <Group>
+                <ValueExpression>'Threatened'</ValueExpression>
+                <TestExpression>in(${var94,binned},'Endangered','Proposed Endangered','Proposed Threatened','Threatened')</TestExpression>
+            </Group>
+            <Group>
+                <ValueExpression>'Extinct'</ValueExpression>
+                <TestExpression>in(${var94,binned},'Extinct')</TestExpression>
+            </Group>
+            <Other>
+                <ValueExpression>${var94,binned}</ValueExpression>
+            </Other>
+        </Grouping>
+    </Groupings>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.2.2" lastDate="2019-09-27T16:53:45Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:14:31Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2020-10-14T19:14:19Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-27T16:53:44.762Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

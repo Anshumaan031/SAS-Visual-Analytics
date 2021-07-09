@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice2.2 (Alternate)" createdLocale="en" createdVersion="4.1.2" dateCreated="2018-07-24T18:26:48Z" dateModified="2019-09-18T20:17:58Z" createdApplication="SAS Visual Analytics 8.3" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="38">
+    <DataSources>
+        <DataSource label="FACILITY_TOY" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="FACILITY_TOY" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Facility"/>
+                <DataItem name="bi9" xref="FacilityAge"/>
+                <DataItem name="bi10" xref="FacilityCity"/>
+                <DataItem name="bi11" xref="FacilityContinent"/>
+                <DataItem name="bi12" xref="FacilityCountry"/>
+                <DataItem name="bi13" xref="FacilityEfficiency"/>
+                <DataItem name="bi14" xref="FacilityEmployees"/>
+                <DataItem name="bi15" xref="FacilityOpeningDate"/>
+                <DataItem name="bi16" xref="FacilityRegion"/>
+                <DataItem name="bi17" xref="Unit"/>
+                <DataItem name="bi18" xref="UnitActual"/>
+                <DataItem name="bi19" xref="UnitAge"/>
+                <DataItem name="bi20" xref="UnitCapacity"/>
+                <DataItem name="bi21" xref="UnitDiscardRate"/>
+                <DataItem name="bi22" xref="UnitDiscards"/>
+                <DataItem name="bi23" xref="UnitLifespan"/>
+                <DataItem name="bi24" xref="UnitLifespanLimit"/>
+                <DataItem name="bi25" xref="UnitReliability"/>
+                <DataItem name="bi26" xref="UnitStatus"/>
+                <DataItem name="bi27" xref="UnitStatusCode"/>
+                <DataItem name="bi28" xref="UnitTarget"/>
+                <DataItem name="bi29" xref="UnitYieldRate"/>
+                <DataItem name="bi30" xref="FacilityCityLat"/>
+                <DataItem name="bi31" xref="FacilityCityLon"/>
+                <DataItem name="bi32" xref="FacilityLat"/>
+                <DataItem name="bi33" xref="FacilityLon"/>
+                <DataItem name="bi34" xref="FacilityRegionLat"/>
+                <DataItem name="bi35" xref="FacilityRegionLon"/>
+                <PredefinedDataItem calculation="totalCount" name="bi36" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi37" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.1.2" lastDate="2018-07-24T18:26:48Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:22:07Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:22:02Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

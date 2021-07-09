@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice7.2b (Challenge)" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2018-02-10T02:05:57Z" dateModified="2019-12-11T20:18:44Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="55">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd36">
+            <BusinessItems>
+                <RelationalDataItem name="bi43" base="bi19"/>
+                <RelationalDataItem name="bi45" base="bi33"/>
+                <RelationalDataItem name="bi53" base="bi11"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd37">
+                <MultidimensionalQuery rowSubtotals="false" columnSubtotals="true" rowTotals="true" columnTotals="true" detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi53"/>
+                            <BusinessItem ref="bi45"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi43"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi53" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                    <RowSortItems>
+                        <SortItem ref="bi43" sortDirection="ascending"/>
+                    </RowSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="crosstab" maxRowsBehavior="noData" name="dd38"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="EMPLOYEES_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="EMPLOYEES_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Anniversary Month" hidden="true"/>
+                <DataItem name="bi9" label="Salary" xref="Salary"/>
+                <DataItem name="bi10" xref="Company" hidden="true"/>
+                <DataItem name="bi11" xref="Department"/>
+                <DataItem name="bi12" xref="Employee_Country" hidden="true"/>
+                <DataItem name="bi13" xref="Employee_Hire_Date" hidden="true"/>
+                <DataItem name="bi14" xref="Employee ID" hidden="true"/>
+                <DataItem name="bi15" xref="Employee_Name" hidden="true"/>
+                <DataItem name="bi16" xref="Employee_Term_Date" hidden="true"/>
+                <DataItem name="bi18" xref="Org_Group" hidden="true"/>
+                <DataItem name="bi19" xref="Job_Title"/>
+                <DataItem name="bi20" xref="Manager ID" hidden="true"/>
+                <DataItem name="bi22" xref="Total_Orders" hidden="true"/>
+                <DataItem name="bi23" xref="Total_Profit" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi24" label="Frequency" usage="quantitative" format="COMMA12." hidden="true"/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi25" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <AggregateCalculatedItem dataType="double" name="bi33" label="Average Salary" format="DOLLAR12.2">
+                    <Expression>aggregate(average,group,${bi9,raw})</Expression>
+                </AggregateCalculatedItem>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Crosstab resultDefinitions="dd38" name="ve35" data="dd36" label="Salary by Job and Gender" applyDynamicBrushes="yes" sourceInteractionVariables="bi43 bi53">
+            <Axes>
+                <Axis type="column">
+                    <Hierarchy name="ve54" variable="bi53"/>
+                    <Measures>
+                        <Measure name="ve46" variable="bi45"/>
+                    </Measures>
+                </Axis>
+                <Axis type="row">
+                    <Hierarchy name="ve44" variable="bi43"/>
+                </Axis>
+            </Axes>
+            <Summary position="after">
+                <Total columnVisible="true" rowVisible="true"/>
+                <Subtotal columnVisible="false" rowVisible="false"/>
+            </Summary>
+        </Crosstab>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve35" name="vi34">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2018-02-10T02:05:57Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:45:19Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:34:18Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:45:19Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2019-12-11T20:14:22Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2019-12-11T20:18:42.531Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo2.3" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2018-03-02T17:54:57Z" dateModified="2020-04-08T14:17:21Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="120">
+    <DataDefinitions>
+        <DataDefinition dataSource="ds36" type="mapprovider" name="dd35"/>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd30">
+            <BusinessItems>
+                <SyntheticItems name="si92">
+                    <Item purpose="geoItemRaw" name="bi93"/>
+                </SyntheticItems>
+            </BusinessItems>
+            <DataDefinition type="procedural" name="dd31">
+                <ProceduralQuery type="geoMap" scoreCodeNumber="94">
+                    <Arguments>
+                        <Argument purpose="geoType">
+                            <StringValue>bubble</StringValue>
+                        </Argument>
+                    </Arguments>
+                </ProceduralQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="geoBubble" maxRowsBehavior="truncate" name="dd32" syntheticItems="si92"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd48">
+            <BusinessItems>
+                <RelationalDataItem name="bi54" base="bi10"/>
+                <RelationalDataItem name="bi119" base="bi107"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd49">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi54"/>
+                            <BusinessItem ref="bi119"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi54" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd50"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="PARKS_LOC" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="PARKS_LOC" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Abundance"/>
+                <DataItem name="bi9" xref="Acres"/>
+                <DataItem name="bi10" xref="Category"/>
+                <DataItem name="bi13" xref="Family"/>
+                <DataItem name="bi14" xref="Latitude"/>
+                <DataItem name="bi15" xref="Longitude"/>
+                <DataItem name="bi16" xref="Nativeness"/>
+                <DataItem name="bi17" xref="Occurrence"/>
+                <DataItem name="bi18" xref="Order"/>
+                <DataItem name="bi23" xref="Seasonality"/>
+                <DataItem name="bi25" xref="State"/>
+                <PredefinedDataItem calculation="totalCount" name="bi26" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi27" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi107" xref="Common Names"/>
+                <DataItem name="bi108" xref="Conservation Status"/>
+                <DataItem name="bi109" xref="ParkID"/>
+                <DataItem name="bi110" xref="Park Name"/>
+                <DataItem name="bi111" xref="Record Status"/>
+                <DataItem name="bi112" xref="Scientific Name"/>
+                <DataItem name="bi113" xref="Species ID"/>
+            </BusinessItemFolder>
+        </DataSource>
+        <DataSource label="OpenStreetMapProvider" type="mapprovider" name="ds36">
+            <OpenStreetMapProvider osmType="SASMAPNIK_LITE"/>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="geo" graphSubType="geoBubble" supplementalVisuals="ve37" mapData="dd35" resultDefinitions="dd32" name="ve29" data="dd30" label="Park Locations" applyDynamicBrushes="yes">
+            <EditorProperties>
+                <Property key="derivedVisualType">true</Property>
+            </EditorProperties>
+            <Title auto="true"><P><DynamicSpan key="bird.autotitle.template.oneByTwo.fmt.txt"><Substitutions><Substitution key="bird.autotitle.size.txt"/><Substitution key="bird.autotitle.category.txt"/></Substitutions></DynamicSpan></P></Title>
+<![CDATA[<StatGraph opaque="false" includeMissingDiscrete="true" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DataNameMap>
+            <Entry model="LayoutOverlayMap_14" data="dd32"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutOverlayMap name="LayoutOverlayMap_14" cycleAttrs="true" cycleColorResponses="true">
+        <MapLayer name="MapLayer_14"/>
+        <BubblePlot name="BubblePlot" dataTransparency="0.125" display="FILL OUTLINE" relativeScaleType="magnitude" trailDisplay="BUBBLE LINE" auxiliary="Role1 Role1" tip="none" x="dd32#longitude" y="dd32#latitude" size="dd32#size" colorResponse="dd32#color">
+            <Roles>
+                <Role name="Role1" type="variable">dd32#category</Role>
+            </Roles>
+        </BubblePlot>
+    </LayoutOverlayMap>
+    <LayoutGlobalLegend border="false" legendTitlePosition="top" allowCollapsed="true">
+        <SizeLegend border="false" opaque="false" hAlign="left" vAlign="bottom" orient="horizontal" extractScale="true" type="shape" title_type="KEYWORD" title="AUTO">
+            <GraphNames>
+                <Value>BubblePlot</Value>
+            </GraphNames>
+        </SizeLegend>
+        <ContinuousLegend border="false" opaque="false" vAlign="bottom" valueStyle="inflections" displayMissing="automatic" extractScale="true" type="fillcolor" title_type="KEYWORD" title="AUTO">
+            <PadAttrs top="2px" bottom="2px" left="2px" right="2px"/>
+            <GraphNames>
+                <Value>BubblePlot</Value>
+            </GraphNames>
+        </ContinuousLegend>
+        <AutoLegend opaque="false" sortOrder="ascending">
+            <GraphNames>
+                <Value>BubblePlot</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <Animation keyframesPerSecond="1" playDirectionForward="true" repeatEnabled="false"/>
+</StatGraph>]]>
+        </Graph>
+        <VisualContainer name="ve45" label="Layout Container 1" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">LAYOUT_CONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Table columnSizing="autoFill" resultDefinitions="dd50" name="ve47" data="dd48" label="Species Details" applyDynamicBrushes="yes" sourceInteractionVariables="bi54 bi119">
+            <Columns>
+                <Column variable="bi54" isVisible="true"/>
+                <Column variable="bi119" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Table columnSizing="autoFill" resultDefinitions="dd32" name="ve37" data="dd30" applyDynamicBrushes="yes"/>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Container ref="ve45" name="vi44">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="shrinkable"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="shrinkable"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                        <ResponsiveLayout orientation="vertical" overflow="grow"/>
+                        <Visual ref="ve29" name="vi28">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                        <Visual ref="ve47" name="vi46">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                    </Container>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <Interactions>
+        <Interaction name="ia91" type="filter" derived="false">
+            <InteractionElementReference purpose="source" ref="ve29"/>
+            <InteractionElementReference purpose="target" ref="ve47"/>
+        </Interaction>
+    </Interactions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2018-03-02T17:54:57Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T20:37:38Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:14:47Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T20:37:38Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2019-12-11T19:12:28Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2020-04-08T14:17:21.494Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo9.2" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2018-01-05T19:07:48Z" dateModified="2020-01-15T21:32:23Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="114">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd34">
+            <BusinessItems>
+                <RelationalDataItem name="bi38" base="bi9"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd35">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi38"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi38" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="buttonBar" maxRowsBehavior="truncate" name="dd36"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd41">
+            <BusinessItems>
+                <RelationalDataItem name="bi54" base="bi12"/>
+                <RelationalDataItem name="bi56" base="bi30"/>
+                <RelationalDataItem name="bi112" base="bi9"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd42">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi54"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi56"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <MeasureSortItem ref="bi56" sortDirection="descending"/>
+                        <SortItem ref="bi54" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="graphDefault" maxRowsBehavior="truncate" name="dd43"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd50">
+            <BusinessItems>
+                <RelationalDataItem name="bi57" base="bi12"/>
+                <RelationalDataItem name="bi58" base="bi25"/>
+                <RelationalDataItem name="bi113" base="bi9"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd51">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi57"/>
+                            <BusinessItem ref="bi58"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi57" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd52"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="incomplete" name="dd75">
+            <DataDefinition type="relational" name="dd76">
+                <RelationalQuery detail="false"/>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="dropdown" maxRowsBehavior="truncate" name="dd77"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="CUSTOMERS_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="City" hidden="true"/>
+                <DataItem name="bi9" label="Continent" xref="Continent"/>
+                <DataItem name="bi10" xref="Unit Cost" hidden="true"/>
+                <DataItem name="bi11" xref="Customer_BirthDate" hidden="true"/>
+                <DataItem name="bi12" xref="CustomerCountryLabel"/>
+                <DataItem name="bi13" xref="Customer_Group" hidden="true"/>
+                <DataItem name="bi14" xref="Customer ID" hidden="true"/>
+                <DataItem name="bi15" xref="Customer_Type" hidden="true"/>
+                <DataItem name="bi18" xref="Delivery_Date" hidden="true"/>
+                <DataItem name="bi19" xref="Order_Date" hidden="true"/>
+                <DataItem name="bi20" xref="Days to Delivery" hidden="true"/>
+                <DataItem name="bi21" xref="Discount" hidden="true"/>
+                <DataItem name="bi22" xref="Order ID" hidden="true"/>
+                <DataItem name="bi23" xref="OrderTypeLabel" hidden="true"/>
+                <DataItem name="bi24" xref="Postal_Code" hidden="true"/>
+                <DataItem name="bi25" label="Average Profit" xref="Profit" aggregation="average"/>
+                <DataItem name="bi26" xref="Quantity" hidden="true"/>
+                <DataItem name="bi27" xref="Total Revenue" hidden="true"/>
+                <DataItem name="bi28" xref="State_Province" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi30" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi31" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <CalculatedItem dataType="double" name="bi82" label="Average Profit (Benchmark)" usage="quantitative" format="DOLLAR12.2" aggregation="average">
+                    <Expression>cond(eq(${bi12,binned},'China'),${bi25,raw},.)</Expression>
+                </CalculatedItem>
+                <AggregateCalculatedItem dataType="double" name="bi93" label="+/- vs Benchmark" format="DOLLAR12.2">
+                    <Expression>minus(aggregate(average,group,${bi25,raw}),aggregate(average,all,${bi82,raw}))</Expression>
+                </AggregateCalculatedItem>
+                <DataItem name="bi106" xref="Customer_Name"/>
+                <DataItem name="bi107" xref="Loyalty Num" hidden="true"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Prompt ref="pr37" name="ve33" label="Continent Selector" selectionDisabled="true" applyDynamicBrushes="promptsOnly" sourceInteractionVariables="bi38">
+            <EditorProperties>
+                <Property key="autoChartCategory">CONTROL</Property>
+            </EditorProperties>
+            <Title><P><Span>Select a continent to filter the page:</Span></P></Title>
+            <LinkBar/>
+        </Prompt>
+        <Graph graphType="bar" supplementalVisuals="ve44" resultDefinitions="dd43" name="ve40" data="dd41" label="+/- Benchmark by Country" applyDynamicBrushes="yes" sourceInteractionVariables="bi54">
+            <EditorProperties>
+                <Property key="autoFrequencyQueryDataItemName">bi56</Property>
+                <Property key="addedInteractionQueryDataItems">bi112</Property>
+            </EditorProperties>
+            <Title auto="true"><P><DynamicSpan key="bird.autotitle.template.oneOfTwo.fmt.txt"><Substitutions><Substitution valueType="label" variables="bi30"/><Substitution valueType="label" variables="bi12"/></Substitutions></DynamicSpan></P></Title>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="CATEGORY" description="CATEGORY_VAR" required="true" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd43.bi54</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="RESPONSE" description="MEASURE_VAR" required="true" assignedType="any" type="numeric" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd43.bi56</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="GROUP" description="SUBGROUP_VAR" required="false" type="character"/>
+            <DynVar name="COLUMN" description="HORIZONTAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="ROW" description="VERTICAL_SERIES_VAR" required="false" type="character" multiplesAllowed="true"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" assignedType="numeric" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd43.bi54</Value>
+                    <Value>dd43.bi56</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="KEY_FRAME" description="ANIMATION" required="false" type="time" multiplesAllowed="false"/>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+        <DataNameMap>
+            <Entry model="LayoutDataMatrix_5" data="dd43"/>
+        </DataNameMap>
+    </Meta>
+    <LayoutDataMatrix name="LayoutDataMatrix_5" includeMissingClass="true" rowVars="ROW" columnVars="COLUMN">
+        <LayoutPrototypeOverlay2D>
+            <BarChartParm name="BarChart" tipListPolicy="replace" _stmt="barchart" groupDisplay="cluster" orient="horizontal" stat="none" tip="TIP" category="CATEGORY" responseVars="RESPONSE" group="GROUP"/>
+            <XAxisOpts name="categoryAxis">
+                <DiscreteOpts sortOrder="data"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </XAxisOpts>
+            <YAxisOpts reverse="true">
+                <DiscreteOpts tickValueFitPolicy="staggertruncatedrop" sortOrder="data" tickValueAppearance="auto"/>
+                <LinearOpts>
+                    <TickValueFormatOpts extractScale="true"/>
+                </LinearOpts>
+            </YAxisOpts>
+        </LayoutPrototypeOverlay2D>
+    </LayoutDataMatrix>
+    <LayoutGlobalLegend legendTitlePosition="top" allowCollapsed="true">
+        <AutoLegend>
+            <GraphNames>
+                <Value>BarChart</Value>
+            </GraphNames>
+        </AutoLegend>
+    </LayoutGlobalLegend>
+    <Animation keyFrame="KEY_FRAME"/>
+    <OverviewAxis maxPlotSize="60px" minPlotSize="35px" visible="off" axis="categoryAxis"/>
+</StatGraph>]]>
+        </Graph>
+        <VisualContainer name="ve47" label="Layout Container 1" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">LAYOUT_CONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Table columnSizing="autoFill" resultDefinitions="dd52" name="ve49" data="dd50" label="Country Details" applyDynamicBrushes="yes" sourceInteractionVariables="bi57">
+            <EditorProperties>
+                <Property key="addedInteractionQueryDataItems">bi113</Property>
+            </EditorProperties>
+            <Columns>
+                <Column variable="bi57" isVisible="true"/>
+                <Column variable="bi58" isVisible="true"/>
+            </Columns>
+        </Table>
+        <Table columnSizing="autoFill" resultDefinitions="dd43" name="ve44" data="dd41" applyDynamicBrushes="yes" sourceInteractionVariables="bi54">
+            <Columns>
+                <Column variable="bi54"/>
+                <Column variable="bi56"/>
+            </Columns>
+        </Table>
+        <VisualContainer name="ve72" label="Layout Container 2" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">LAYOUT_CONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Prompt ref="pr78" name="ve74" label="Benchmark Country Selector" selectionDisabled="true" applyDynamicBrushes="promptsOnly">
+            <EditorProperties>
+                <Property key="autoChartCategory">CONTROL</Property>
+            </EditorProperties>
+            <Title><P><Span>Select a benchmark country (required):</Span></P></Title>
+            <ComboBox/>
+        </Prompt>
+    </VisualElements>
+    <PromptDefinitions>
+        <PromptDefinition data="dd34" labelVariable="bi38" valueVariable="bi38" resultDefinitions="dd36" name="pr37">
+            <DefaultValue>
+                <String>Asia</String>
+            </DefaultValue>
+            <StringConstraint required="true"/>
+        </PromptDefinition>
+        <PromptDefinition data="dd75" resultDefinitions="dd77" name="pr78">
+            <StringConstraint required="true"/>
+        </PromptDefinition>
+    </PromptDefinitions>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve33" name="vi32">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="fixed"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="fixed"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Container ref="ve47" name="vi46">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="shrinkable"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="shrinkable"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                        <ResponsiveLayout orientation="vertical" overflow="grow"/>
+                        <Container ref="ve72" name="vi71">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="shrinkable"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="shrinkable"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                            <ResponsiveLayout orientation="vertical" overflow="grow">
+                                <Weights mediaTarget="mt5" unit="percent">
+                                    <Weight value="100%"/>
+                                </Weights>
+                                <Weights mediaTarget="mt4" unit="percent">
+                                    <Weight value="100%"/>
+                                </Weights>
+                                <Weights mediaTarget="mt3" unit="percent">
+                                    <Weight value="100%"/>
+                                </Weights>
+                            </ResponsiveLayout>
+                            <Visual ref="ve74" name="vi73">
+                                <ResponsiveConstraint>
+                                    <WidthConstraint>
+                                        <Width mediaTarget="mt3" flexibility="flexible"/>
+                                    </WidthConstraint>
+                                    <HeightConstraint>
+                                        <Height mediaTarget="mt3" flexibility="fixed"/>
+                                    </HeightConstraint>
+                                </ResponsiveConstraint>
+                            </Visual>
+                            <Visual ref="ve40" name="vi39">
+                                <ResponsiveConstraint>
+                                    <WidthConstraint>
+                                        <Width mediaTarget="mt3" flexibility="flexible"/>
+                                    </WidthConstraint>
+                                    <HeightConstraint>
+                                        <Height mediaTarget="mt3" flexibility="flexible"/>
+                                    </HeightConstraint>
+                                </ResponsiveConstraint>
+                            </Visual>
+                        </Container>
+                        <Visual ref="ve49" name="vi48">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                    </Container>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <Interactions>
+        <Interaction name="ia45" type="filter" derived="true">
+            <InteractionElementReference purpose="source" ref="ve33" variable="bi38"/>
+            <InteractionElementReference purpose="target" ref="ve40" variable="bi112"/>
+        </Interaction>
+        <Interaction name="ia53" type="filter" derived="true">
+            <InteractionElementReference purpose="source" ref="ve33" variable="bi38"/>
+            <InteractionElementReference purpose="target" ref="ve49" variable="bi113"/>
+        </Interaction>
+        <Interaction name="ia79" type="filter" derived="true">
+            <InteractionElementReference purpose="source" ref="ve33"/>
+            <InteractionElementReference purpose="target" ref="ve74"/>
+        </Interaction>
+    </Interactions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2018-01-05T19:07:48Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:37:47Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:20:11Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:37:47Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2019-12-11T20:48:58Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2020-01-15T21:32:22.658Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

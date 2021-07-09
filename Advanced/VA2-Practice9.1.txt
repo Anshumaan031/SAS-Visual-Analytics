@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice9.1" createdLocale="en" createdVersion="4.2.2" dateCreated="2019-09-23T15:55:33Z" dateModified="2019-12-11T20:47:20Z" createdApplication="SAS Visual Analytics 8.4" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="53">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd42">
+            <BusinessItems>
+                <RelationalDataItem name="bi46" base="bi22"/>
+                <RelationalDataItem name="bi49" base="bi26"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd43">
+                <MultidimensionalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi46"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi49"/>
+                        </Axis>
+                    </Axes>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="treeMap" maxRowsBehavior="truncate" name="dd44"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="PRODUCTS_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="PRODUCTS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="City" hidden="true"/>
+                <DataItem name="bi9" xref="Continent" hidden="true"/>
+                <DataItem name="bi10" xref="Cost" hidden="true"/>
+                <DataItem name="bi11" xref="CountryLabel" hidden="true"/>
+                <DataItem name="bi12" xref="Customer_ID" hidden="true"/>
+                <DataItem name="bi13" xref="Delivery_Date" hidden="true"/>
+                <DataItem name="bi14" xref="Order_Date" hidden="true"/>
+                <DataItem name="bi15" xref="Discount" hidden="true"/>
+                <DataItem name="bi16" xref="Employee_ID" hidden="true"/>
+                <DataItem name="bi17" xref="Street_Name" hidden="true"/>
+                <DataItem name="bi18" xref="Order_ID" hidden="true"/>
+                <DataItem name="bi19" xref="OrderTypeLabel" hidden="true"/>
+                <DataItem name="bi20" xref="Postal_Code" hidden="true"/>
+                <DataItem name="bi21" xref="Product_Category" hidden="true"/>
+                <DataItem name="bi22" xref="Product_Group"/>
+                <DataItem name="bi23" xref="Product_ID" hidden="true"/>
+                <DataItem name="bi24" xref="Product_Line" hidden="true"/>
+                <DataItem name="bi25" xref="Product_Name" hidden="true"/>
+                <DataItem name="bi26" label="Quantity" xref="Quantity"/>
+                <DataItem name="bi27" xref="RetailPrice" hidden="true"/>
+                <DataItem name="bi28" xref="State_Province" hidden="true"/>
+                <DataItem name="bi29" xref="Street_ID" hidden="true"/>
+                <DataItem name="bi30" xref="SupplierContinent" hidden="true"/>
+                <DataItem name="bi31" xref="SupplierCountryLabel" hidden="true"/>
+                <DataItem name="bi32" xref="Supplier_ID" hidden="true"/>
+                <DataItem name="bi33" xref="Supplier_Name" hidden="true"/>
+                <DataItem name="bi34" xref="xyContinentLat" hidden="true"/>
+                <DataItem name="bi35" xref="xyContinentLon" hidden="true"/>
+                <DataItem name="bi36" xref="xySupContLat" hidden="true"/>
+                <DataItem name="bi37" xref="xySupContLong" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi38" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi39" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Graph graphType="treeMap" supplementalVisuals="ve45" resultDefinitions="dd44" name="ve41" data="dd42" label="Quantity by Product Group" applyDynamicBrushes="yes" sourceInteractionVariables="bi46">
+            <EditorProperties>
+                <Property key="isAutoLabel">false</Property>
+            </EditorProperties>
+            <Title auto="true"><P><DynamicSpan key="bird.autotitle.template.oneByTwo.fmt.txt"><Substitutions><Substitution valueType="label" variables="bi26"/><Substitution valueType="label" variables="bi22"/></Substitutions></DynamicSpan></P></Title>
+            <Conditions>
+                <Condition ref="cd52">
+                    <ConditionParameters>
+                        <ConditionParameter variable="bi1" parameter="bi49"/>
+                    </ConditionParameters>
+                </Condition>
+            </Conditions>
+<![CDATA[<StatGraph border="false" opaque="false" includeMissingDiscrete="true" selectionMode="multiple" missingValueDisplay="autolabel">
+    <PadAttrs top="0px" bottom="0px" left="0px" right="0px"/>
+    <Meta>
+        <DynVars>
+            <DynVar name="TILE" description="TILE_VAR" required="true" assignedType="any" type="character">
+                <DefaultValues>
+                    <Value>dd44.bi46</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="SIZE" description="SIZE_VAR" required="true" assignedType="any" type="numeric">
+                <DefaultValues>
+                    <Value>dd44.bi49</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="COLOR" description="COLOR_VAR" required="false" type="numeric"/>
+            <DynVar name="TIP" description="TIP_VAR" required="false" assignedType="numeric" type="any" multiplesAllowed="true">
+                <DefaultValues>
+                    <Value>dd44.bi46</Value>
+                    <Value>dd44.bi49</Value>
+                </DefaultValues>
+            </DynVar>
+            <DynVar name="HIDDEN" description="HIDDEN_VAR" required="false" type="character" multiplesAllowed="true"/>
+        </DynVars>
+    </Meta>
+    <LayoutRegion>
+        <TreeMap name="TreeMap" tipListPolicy="replace" _stmt="treemap" colorStat="none" sizeStat="none" tip="TIP" tileBy="TILE" size="SIZE" colorResponse="COLOR" colorModel="TwoColorRamp">
+            <OutlineAttrs thickness="3px"/>
+        </TreeMap>
+    </LayoutRegion>
+    <LayoutGlobalLegend legendTitlePosition="top" allowCollapsed="true">
+        <SizeLegend border="false" opaque="false" extractScale="true" title_type="KEYWORD" title="AUTO">
+            <GraphNames>
+                <Value>TreeMap</Value>
+            </GraphNames>
+        </SizeLegend>
+        <ContinuousLegend border="false" opaque="false" valueStyle="inflections" displayMissing="automatic" extractScale="true" title_type="KEYWORD" title="AUTO">
+            <GraphNames>
+                <Value>TreeMap</Value>
+            </GraphNames>
+        </ContinuousLegend>
+    </LayoutGlobalLegend>
+</StatGraph>]]>
+        </Graph>
+        <Table columnSizing="autoFill" resultDefinitions="dd44" name="ve45" data="dd42" applyDynamicBrushes="yes" sourceInteractionVariables="bi46">
+            <Columns>
+                <Column variable="bi46"/>
+                <Column variable="bi49"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve41" name="vi40">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" preferredSizeBehavior="ignore" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" preferredSizeBehavior="ignore" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <Conditions>
+        <Condition scope="local" name="cd52">
+            <ConditionVariables>
+                <ConditionVariable variable="bi1" type="numeric"/>
+            </ConditionVariables>
+            <If name="cc51" class="If">
+                <Expression>lt(${bi1},50000)</Expression>
+            </If>
+        </Condition>
+    </Conditions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet>
+<![CDATA[
+#cd52 .If {
+  color: #DD5757;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.2.2" lastDate="2019-09-23T17:06:27Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:36:22Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.2.2" finalVersion="4.2.4" date="2019-12-11T20:45:50Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.4" lastDate="2019-09-23T17:06:26.764Z"/>
+                <Revision editorVersion="8.5" lastDate="2019-12-11T20:47:18.442Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

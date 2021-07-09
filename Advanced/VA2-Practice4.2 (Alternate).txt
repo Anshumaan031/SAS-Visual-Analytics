@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice4.2 (Alternate)" createdLocale="en" createdVersion="4.1.2" dateCreated="2018-07-27T16:30:56Z" dateModified="2019-09-18T20:18:36Z" createdApplication="SAS Visual Analytics 8.3" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="24">
+    <DataSources>
+        <DataSource label="NA_HURRICANES" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="NA_HURRICANES" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="Basin"/>
+                <DataItem name="bi9" xref="Date"/>
+                <DataItem name="bi10" xref="Flag"/>
+                <DataItem name="bi11" xref="From"/>
+                <DataItem name="bi12" xref="Hem_EW"/>
+                <DataItem name="bi13" xref="Hem_NS"/>
+                <DataItem name="bi14" xref="Hour"/>
+                <DataItem name="bi15" xref="MaxWind"/>
+                <DataItem name="bi16" xref="MinPressure"/>
+                <DataItem name="bi17" xref="Name"/>
+                <DataItem name="bi18" xref="to_lat"/>
+                <DataItem name="bi19" xref="to_loc"/>
+                <DataItem name="bi20" xref="to_lon"/>
+                <DataItem name="bi21" xref="Type"/>
+                <PredefinedDataItem calculation="totalCount" name="bi22" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi23" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <ExportProperties>
+        <Export destination="pdf">
+            <Property key="showCoverPage" value="true"/>
+            <Property key="showPageNumbers" value="true"/>
+        </Export>
+    </ExportProperties>
+    <History>
+        <Versions>
+            <Version key="4.1.2" lastDate="2018-07-27T16:30:56Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:23:11Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:23:07Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

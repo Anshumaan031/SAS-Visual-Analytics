@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Practice7.2c (Challenge 1)" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2018-02-10T02:23:53Z" dateModified="2019-12-11T20:26:55Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="73">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd39">
+            <BusinessItems>
+                <RelationalDataItem name="bi49" base="bi19"/>
+                <RelationalDataItem name="bi50" base="bi25"/>
+                <RelationalDataItem name="bi61" base="bi53"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd40">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi49"/>
+                            <BusinessItem ref="bi50"/>
+                            <BusinessItem ref="bi61"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi49" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd41"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd46">
+            <BusinessItems>
+                <RelationalDataItem name="bi52" base="bi51"/>
+                <RelationalDataItem name="bi70" base="bi62"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd47">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi52"/>
+                            <BusinessItem ref="bi70"/>
+                        </Axis>
+                    </Axes>
+                    <SortItems>
+                        <SortItem ref="bi52" sortDirection="ascending"/>
+                    </SortItems>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="listTable" maxRowsBehavior="truncate" name="dd48"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="CUSTOMERS_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="City" hidden="true"/>
+                <DataItem name="bi9" xref="Continent" hidden="true"/>
+                <DataItem name="bi10" xref="Unit Cost" hidden="true"/>
+                <DataItem name="bi11" xref="Customer_BirthDate" hidden="true"/>
+                <DataItem name="bi12" xref="CustomerCountryLabel" hidden="true"/>
+                <DataItem name="bi13" xref="Customer_Group" hidden="true"/>
+                <DataItem name="bi14" xref="Customer ID" hidden="true"/>
+                <DataItem name="bi15" xref="Customer_Type" hidden="true"/>
+                <DataItem name="bi18" xref="Delivery_Date" hidden="true"/>
+                <DataItem name="bi19" label="Order Date" xref="Order_Date" format="MONYY7"/>
+                <DataItem name="bi20" xref="Days to Delivery" hidden="true"/>
+                <DataItem name="bi21" xref="Discount" hidden="true"/>
+                <DataItem name="bi22" xref="Order ID" hidden="true"/>
+                <DataItem name="bi23" xref="OrderTypeLabel" hidden="true"/>
+                <DataItem name="bi24" xref="Postal_Code" hidden="true"/>
+                <DataItem name="bi25" xref="Profit"/>
+                <DataItem name="bi26" xref="Quantity" hidden="true"/>
+                <DataItem name="bi27" xref="Total Revenue" hidden="true"/>
+                <DataItem name="bi28" xref="State_Province" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi30" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi31" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi51" label="Order Year" xref="Order_Date" format="YEAR4"/>
+                <AggregateCalculatedItem dataType="double" name="bi53" label="Cumulative Profit" format="DOLLAR12.2">
+                    <Expression>cumulativePeriodWithStartPoint(sum,${bi25,raw},allFiltersApply,${bi19,raw},inferred,inferred,0,1,full)</Expression>
+                </AggregateCalculatedItem>
+                <AggregateCalculatedItem dataType="double" name="bi62" label="Cumulative Profit (First Quarter)" format="DOLLAR12.2">
+                    <Expression>cumulativePeriodWithStartPoint(sum,${bi25,raw},allFiltersApply,${bi19,raw},inferred,inferred,0,1,full)</Expression>
+                </AggregateCalculatedItem>
+                <DataItem name="bi71" xref="Customer_Name"/>
+                <DataItem name="bi72" xref="Loyalty Num" hidden="true"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Table columnSizing="autoFill" resultDefinitions="dd41" name="ve38" data="dd39" label="Monthly" applyDynamicBrushes="yes" sourceInteractionVariables="bi49">
+            <Title><P><Span>Monthly</Span></P></Title>
+            <Columns>
+                <Column variable="bi49" isVisible="true"/>
+                <Column variable="bi50" isVisible="true"/>
+                <Column variable="bi61" isVisible="true"/>
+            </Columns>
+        </Table>
+        <VisualContainer name="ve43" label="Layout Container 1" selectionDisabled="true">
+            <EditorProperties>
+                <Property key="visualType">LAYOUT_CONTAINER</Property>
+            </EditorProperties>
+        </VisualContainer>
+        <Table columnSizing="autoFill" resultDefinitions="dd48" name="ve45" data="dd46" label="Yearly" applyDynamicBrushes="yes" sourceInteractionVariables="bi52">
+            <Title><P><Span>Yearly</Span></P></Title>
+            <Columns>
+                <Column class="tableColumnbi52" variable="bi52" isVisible="true"/>
+                <Column variable="bi70" isVisible="true"/>
+            </Columns>
+        </Table>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Container ref="ve43" name="vi42">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="shrinkable"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="shrinkable"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                        <ResponsiveLayout orientation="vertical" overflow="grow"/>
+                        <Visual ref="ve38" name="vi37">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                        <Visual ref="ve45" name="vi44">
+                            <ResponsiveConstraint>
+                                <WidthConstraint>
+                                    <Width mediaTarget="mt3" flexibility="flexible"/>
+                                </WidthConstraint>
+                                <HeightConstraint>
+                                    <Height mediaTarget="mt3" flexibility="flexible"/>
+                                </HeightConstraint>
+                            </ResponsiveConstraint>
+                        </Visual>
+                    </Container>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet>
+<![CDATA[
+#ve45 .tableColumnbi52 {
+  width: 109px;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2018-02-10T02:23:53Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:46:22Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:34:49Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:46:22Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2019-12-11T20:26:16Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2019-12-11T20:26:54.305Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

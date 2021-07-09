@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo7.2c" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-12-12T20:03:12Z" dateModified="2019-12-11T20:22:23Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.5" nextUniqueNameIndex="52">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd33">
+            <BusinessItems>
+                <RelationalDataItem name="bi36" base="bi13"/>
+                <RelationalDataItem name="bi38" base="bi29"/>
+                <RelationalDataItem name="bi40" base="bi12"/>
+                <RelationalDataItem name="bi42" base="bi25"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd34">
+                <MultidimensionalQuery rowSubtotals="false" columnSubtotals="true" detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi36"/>
+                            <BusinessItem ref="bi38"/>
+                            <BusinessItem ref="bi42"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi40"/>
+                            <BusinessItem ref="bi38"/>
+                        </Axis>
+                    </Axes>
+                    <ColumnSortItems>
+                        <SortItem ref="bi36" sortDirection="ascending"/>
+                    </ColumnSortItems>
+                    <RowSortItems>
+                        <SortItem ref="bi40" sortDirection="ascending"/>
+                    </RowSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="crosstab" maxRowsBehavior="noData" name="dd35"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="CUSTOMERS_CLEAN" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="CUSTOMERS_CLEAN" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="City" hidden="true"/>
+                <DataItem name="bi9" xref="Continent" hidden="true"/>
+                <DataItem name="bi10" xref="Unit Cost" hidden="true"/>
+                <DataItem name="bi11" xref="Customer_BirthDate" hidden="true"/>
+                <DataItem name="bi12" xref="CustomerCountryLabel"/>
+                <DataItem name="bi13" xref="Customer_Group"/>
+                <DataItem name="bi15" xref="Customer_Type" hidden="true"/>
+                <DataItem name="bi17" xref="Delivery_Date" hidden="true"/>
+                <DataItem name="bi18" xref="Order_Date" hidden="true"/>
+                <DataItem name="bi19" xref="Days to Delivery" hidden="true"/>
+                <DataItem name="bi20" xref="Discount" hidden="true"/>
+                <DataItem name="bi21" xref="OrderID" hidden="true"/>
+                <DataItem name="bi22" xref="OrderTypeLabel" hidden="true"/>
+                <DataItem name="bi23" xref="Postal_Code" hidden="true"/>
+                <DataItem name="bi24" xref="Profit" hidden="true"/>
+                <DataItem name="bi25" label="Quantity" xref="Quantity"/>
+                <DataItem name="bi26" xref="Total Revenue" hidden="true"/>
+                <DataItem name="bi27" xref="State_Province" hidden="true"/>
+                <PredefinedDataItem calculation="totalCount" name="bi29" label="Freq" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi30" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+                <DataItem name="bi44" xref="Customer ID" hidden="true"/>
+                <DataItem name="bi46" xref="Order ID" hidden="true"/>
+                <DataItem name="bi50" xref="Customer_Name"/>
+                <DataItem name="bi51" xref="Loyalty Num" hidden="true"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Crosstab resultDefinitions="dd35" name="ve32" data="dd33" label="Quantity by Country and Group" applyDynamicBrushes="yes" sourceInteractionVariables="bi36 bi40">
+            <EditorProperties>
+                <Property key="autoFrequencyQueryDataItemName">bi38</Property>
+            </EditorProperties>
+            <Axes>
+                <Axis type="column">
+                    <Hierarchy name="ve37" variable="bi36"/>
+                    <Measures>
+                        <Measure name="ve39" variable="bi38">
+                            <Conditions>
+                                <Condition ref="cd49">
+                                    <ConditionParameters>
+                                        <ConditionParameter variable="bi1" parameter="bi38"/>
+                                    </ConditionParameters>
+                                </Condition>
+                            </Conditions>
+                        </Measure>
+                        <Measure name="ve43" variable="bi42"/>
+                    </Measures>
+                </Axis>
+                <Axis type="row">
+                    <Hierarchy name="ve41" variable="bi40"/>
+                </Axis>
+            </Axes>
+        </Crosstab>
+    </VisualElements>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve32" name="vi31">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <Conditions>
+        <Condition shareable="false" scope="local" name="cd49">
+            <ConditionVariables>
+                <ConditionVariable variable="bi1" type="numeric"/>
+            </ConditionVariables>
+            <If name="cc48" class="If">
+                <Expression>lt(${bi1},5)</Expression>
+            </If>
+        </Condition>
+    </Conditions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet>
+<![CDATA[
+#cd49 .If {
+  color: #EB1F23;
+  font-family: AvenirNext;
+  font-weight: bold;
+}
+]]>
+            </Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T17:23:58Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:33:47Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:17:35Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:33:47Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2019-12-11T20:21:35Z"/>
+        </Conversions>
+        <Editors>
+            <Editor applicationName="VA">
+                <Revision editorVersion="8.5" lastDate="2019-12-11T20:22:22.352Z"/>
+            </Editor>
+        </Editors>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>

@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><SASReport xmlns="http://www.sas.com/sasreportmodel/bird-4.2.4" label="VA2-Demo7.2b" createdLocale="en" createdVersion="4.1.0.20170913_export" dateCreated="2017-12-12T18:34:59Z" dateModified="2018-06-20T15:33:28Z" createdApplication="SAS Visual Analytics 8.2" lastModifiedApplication="SAS Visual Analytics 8.3" nextUniqueNameIndex="35">
+    <DataDefinitions>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd17">
+            <BusinessItems>
+                <RelationalDataItem name="bi20" base="bi12"/>
+                <RelationalDataItem name="bi24" base="bi10"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="multidimensional" name="dd18">
+                <MultidimensionalQuery rowSubtotals="false" columnSubtotals="true" detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi24"/>
+                        </Axis>
+                        <Axis type="row">
+                            <BusinessItem ref="bi20"/>
+                        </Axis>
+                    </Axes>
+                    <RowSortItems>
+                        <SortItem ref="bi20" sortDirection="ascending"/>
+                    </RowSortItems>
+                </MultidimensionalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" maxRowsLookup="crosstab" maxRowsBehavior="noData" name="dd19"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+        <ParentDataDefinition childQueryRelationship="independent" status="executable" dataSource="ds7" name="dd28">
+            <BusinessItems>
+                <RelationalDataItem binOption="formatBin" name="bi32" base="bi12" usage="quantitative" aggregation="min"/>
+                <RelationalDataItem binOption="formatBin" name="bi33" base="bi12" usage="quantitative" aggregation="max"/>
+            </BusinessItems>
+            <DataDefinition dataSource="ds7" type="relational" name="dd29">
+                <RelationalQuery detail="false">
+                    <Axes>
+                        <Axis type="column">
+                            <BusinessItem ref="bi32"/>
+                            <BusinessItem ref="bi33"/>
+                        </Axis>
+                    </Axes>
+                </RelationalQuery>
+                <ResultDefinitions>
+                    <ResultDefinition purpose="primary" name="dd30"/>
+                </ResultDefinitions>
+            </DataDefinition>
+        </ParentDataDefinition>
+    </DataDefinitions>
+    <DataSources>
+        <DataSource label="SALES_ORDERS" type="relational" name="ds7">
+            <CasResource server="cas-shared-default" library="Public" table="SALES_ORDERS" locale="en_US"/>
+            <BusinessItemFolder>
+                <DataItem name="bi8" xref="MarketPenetration" hidden="true"/>
+                <DataItem name="bi9" xref="OrderMarketingCost" hidden="true"/>
+                <DataItem name="bi10" xref="OrderTotal" format="DOLLAR12.2"/>
+                <DataItem name="bi11" xref="SalesRepActual" hidden="true"/>
+                <DataItem name="bi12" xref="TransactionDate" format="MONYY7"/>
+                <PredefinedDataItem calculation="totalCount" name="bi13" label="Frequency" usage="quantitative" format="COMMA12."/>
+                <PredefinedDataItem calculation="totalCountPercent" name="bi14" label="Frequency Percent" usage="quantitative" format="PERCENT20.2"/>
+            </BusinessItemFolder>
+        </DataSource>
+    </DataSources>
+    <VisualElements>
+        <Crosstab resultDefinitions="dd19" name="ve16" data="dd17" label="Order Total Summary" applyDynamicBrushes="yes" sourceInteractionVariables="bi20">
+            <Axes>
+                <Axis type="row">
+                    <Hierarchy name="ve21" variable="bi20"/>
+                </Axis>
+                <Axis type="column">
+                    <Measures>
+                        <Measure name="ve25" variable="bi24"/>
+                    </Measures>
+                </Axis>
+            </Axes>
+        </Crosstab>
+        <Prompt ref="pr31" name="ve27" label="Transaction Date Selecter" selectionDisabled="true" applyDynamicBrushes="no" sourceInteractionVariables="bi32">
+            <EditorProperties>
+                <Property key="autoChartCategory">CONTROL</Property>
+            </EditorProperties>
+            <Title><P><Span>Select a range of dates:</Span></P></Title>
+            <DualSlider/>
+        </Prompt>
+    </VisualElements>
+    <PromptDefinitions>
+        <PromptDefinition data="dd28" labelVariable="bi32" resultDefinitions="dd30" minVariable="bi32" maxVariable="bi33" name="pr31">
+            <DefaultValue>
+                <NumericRange type="double" minInclusive="true" maxInclusive="true" min="19693.0" max="21063.0"/>
+            </DefaultValue>
+            <NumericRangeConstraint required="true" minInclusive="true" maxInclusive="true"/>
+        </PromptDefinition>
+    </PromptDefinitions>
+    <View>
+        <Header>
+            <MediaContainer target="mt2">
+                <ResponsiveLayout orientation="horizontal" overflow="fit">
+                    <Weights mediaTarget="mt5" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt4" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                    <Weights mediaTarget="mt3" unit="percent">
+                        <Weight value="100%"/>
+                    </Weights>
+                </ResponsiveLayout>
+            </MediaContainer>
+        </Header>
+        <Section name="vi6" label="Page 1">
+            <Header>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="horizontal" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                </MediaContainer>
+            </Header>
+            <Body>
+                <MediaContainer target="mt2">
+                    <ResponsiveLayout orientation="vertical" overflow="fit">
+                        <Weights mediaTarget="mt5" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt4" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                        <Weights mediaTarget="mt3" unit="percent">
+                            <Weight value="100%"/>
+                        </Weights>
+                    </ResponsiveLayout>
+                    <Visual ref="ve27" name="vi26">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="fixed"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                    <Visual ref="ve16" name="vi15">
+                        <ResponsiveConstraint>
+                            <WidthConstraint>
+                                <Width mediaTarget="mt3" flexibility="flexible"/>
+                            </WidthConstraint>
+                            <HeightConstraint>
+                                <Height mediaTarget="mt3" flexibility="flexible"/>
+                            </HeightConstraint>
+                        </ResponsiveConstraint>
+                    </Visual>
+                </MediaContainer>
+            </Body>
+        </Section>
+    </View>
+    <Interactions>
+        <Interaction name="ia34" type="filter" derived="false">
+            <InteractionElementReference purpose="source" ref="ve27" variable="bi32"/>
+            <InteractionElementReference purpose="target" ref="ve16" variable="bi20"/>
+        </Interaction>
+    </Interactions>
+    <MediaSchemes>
+        <MediaScheme name="ms1">
+            <BaseStylesheetResource theme="marine"/>
+            <Stylesheet><![CDATA[]]></Stylesheet>
+        </MediaScheme>
+    </MediaSchemes>
+    <MediaTargets>
+        <MediaTarget windowSize="default" scheme="ms1" name="mt2"/>
+        <MediaTarget windowSize="small" scheme="ms1" name="mt3"/>
+        <MediaTarget windowSize="medium" scheme="ms1" name="mt4"/>
+        <MediaTarget windowSize="large" scheme="ms1" name="mt5"/>
+    </MediaTargets>
+    <Properties>
+        <Property key="lastSection">vi6</Property>
+        <Property key="displayDataSource">ds7</Property>
+    </Properties>
+    <History>
+        <Versions>
+            <Version key="4.1.0" lastDate="2017-12-22T17:21:00Z"/>
+            <Version key="4.1.2" lastDate="2018-06-20T15:33:18Z"/>
+            <Version key="4.2.4" lastDate="2020-10-14T19:17:21Z"/>
+        </Versions>
+        <Conversions>
+            <Conversion startVersion="4.1.0" finalVersion="4.1.2" date="2018-06-20T15:33:18Z"/>
+            <Conversion startVersion="4.1.2" finalVersion="4.2.4" date="2020-10-14T19:17:16Z"/>
+        </Conversions>
+    </History>
+    <SASReportState>
+        <View/>
+    </SASReportState>
+</SASReport>
